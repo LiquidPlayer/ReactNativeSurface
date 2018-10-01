@@ -1,0 +1,378 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0708F0D82148F3A300F07EB4 /* ReactNativeSurface.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0760B24E214145AB003BC08B /* ReactNativeSurface.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0708F0DB2148F3F300F07EB4 /* LiquidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0708F0DA2148F3F300F07EB4 /* LiquidCore.framework */; };
+		0708F0DC2148F3F300F07EB4 /* LiquidCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0708F0DA2148F3F300F07EB4 /* LiquidCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0760B23C21414530003BC08B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0760B23B21414530003BC08B /* AppDelegate.swift */; };
+		0760B23E21414530003BC08B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0760B23D21414530003BC08B /* ViewController.swift */; };
+		0760B24121414530003BC08B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0760B23F21414530003BC08B /* Main.storyboard */; };
+		0760B24321414533003BC08B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0760B24221414533003BC08B /* Assets.xcassets */; };
+		0760B24621414533003BC08B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0760B24421414533003BC08B /* LaunchScreen.storyboard */; };
+		0760B24F214145AB003BC08B /* ReactNativeSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0760B24E214145AB003BC08B /* ReactNativeSurface.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0708F0D92148F3A300F07EB4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0708F0D82148F3A300F07EB4 /* ReactNativeSurface.framework in Embed Frameworks */,
+				0708F0DC2148F3F300F07EB4 /* LiquidCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0708F0DA2148F3F300F07EB4 /* LiquidCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LiquidCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		07108D05214961110060A128 /* libRCTBlob.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRCTBlob.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0760B23821414530003BC08B /* ReactNativeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactNativeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0760B23B21414530003BC08B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0760B23D21414530003BC08B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0760B24021414530003BC08B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0760B24221414533003BC08B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0760B24521414533003BC08B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0760B24721414533003BC08B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0760B24E214145AB003BC08B /* ReactNativeSurface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReactNativeSurface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0760B23521414530003BC08B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0760B24F214145AB003BC08B /* ReactNativeSurface.framework in Frameworks */,
+				0708F0DB2148F3F300F07EB4 /* LiquidCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0760B22F21414530003BC08B = {
+			isa = PBXGroup;
+			children = (
+				0708F0DA2148F3F300F07EB4 /* LiquidCore.framework */,
+				0760B23A21414530003BC08B /* ReactNativeTest */,
+				0760B23921414530003BC08B /* Products */,
+				0760B24D214145AB003BC08B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0760B23921414530003BC08B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0760B23821414530003BC08B /* ReactNativeTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0760B23A21414530003BC08B /* ReactNativeTest */ = {
+			isa = PBXGroup;
+			children = (
+				0760B23B21414530003BC08B /* AppDelegate.swift */,
+				0760B23D21414530003BC08B /* ViewController.swift */,
+				0760B23F21414530003BC08B /* Main.storyboard */,
+				0760B24221414533003BC08B /* Assets.xcassets */,
+				0760B24421414533003BC08B /* LaunchScreen.storyboard */,
+				0760B24721414533003BC08B /* Info.plist */,
+			);
+			path = ReactNativeTest;
+			sourceTree = "<group>";
+		};
+		0760B24D214145AB003BC08B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				07108D05214961110060A128 /* libRCTBlob.a */,
+				0760B24E214145AB003BC08B /* ReactNativeSurface.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0760B23721414530003BC08B /* ReactNativeTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0760B24A21414533003BC08B /* Build configuration list for PBXNativeTarget "ReactNativeTest" */;
+			buildPhases = (
+				0760B23421414530003BC08B /* Sources */,
+				0760B23521414530003BC08B /* Frameworks */,
+				0760B23621414530003BC08B /* Resources */,
+				0708F0D92148F3A300F07EB4 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReactNativeTest;
+			productName = ReactNativeTest;
+			productReference = 0760B23821414530003BC08B /* ReactNativeTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0760B23021414530003BC08B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = LiquidPlayer;
+				TargetAttributes = {
+					0760B23721414530003BC08B = {
+						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
+					};
+				};
+			};
+			buildConfigurationList = 0760B23321414530003BC08B /* Build configuration list for PBXProject "ReactNativeTest" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0760B22F21414530003BC08B;
+			productRefGroup = 0760B23921414530003BC08B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0760B23721414530003BC08B /* ReactNativeTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0760B23621414530003BC08B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0760B24621414533003BC08B /* LaunchScreen.storyboard in Resources */,
+				0760B24321414533003BC08B /* Assets.xcassets in Resources */,
+				0760B24121414530003BC08B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0760B23421414530003BC08B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0760B23E21414530003BC08B /* ViewController.swift in Sources */,
+				0760B23C21414530003BC08B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0760B23F21414530003BC08B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0760B24021414530003BC08B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0760B24421414533003BC08B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0760B24521414533003BC08B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0760B24821414533003BC08B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0760B24921414533003BC08B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0760B24B21414533003BC08B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CXSA8L9LJ3;
+				INFOPLIST_FILE = ReactNativeTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = org.liquidplayer.ReactNativeTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0760B24C21414533003BC08B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CXSA8L9LJ3;
+				INFOPLIST_FILE = ReactNativeTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = org.liquidplayer.ReactNativeTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0760B23321414530003BC08B /* Build configuration list for PBXProject "ReactNativeTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0760B24821414533003BC08B /* Debug */,
+				0760B24921414533003BC08B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0760B24A21414533003BC08B /* Build configuration list for PBXNativeTarget "ReactNativeTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0760B24B21414533003BC08B /* Debug */,
+				0760B24C21414533003BC08B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0760B23021414530003BC08B /* Project object */;
+}
