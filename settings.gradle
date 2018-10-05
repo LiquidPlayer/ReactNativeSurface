@@ -2,4 +2,4 @@ include ':ReactNativeSurfaceAndroid'
 include ':LiquidCoreAndroid'
 
 project(':LiquidCoreAndroid').projectDir = new File(
-        rootProject.projectDir, '../../LiquidCore/LiquidCoreAndroid')
+        rootProject.projectDir, '../LiquidCore/LiquidCoreAndroid')
