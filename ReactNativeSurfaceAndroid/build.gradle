@@ -11,7 +11,16 @@ android {
         targetSdkVersion 27
         versionCode 5
         versionName "0.5.0"
+
+        ndk {
+            moduleName "reactnativesurface"
+        }
+
+        buildConfigField 'boolean', 'IS_INTERNAL_BUILD', 'false'
+        buildConfigField 'int', 'EXOPACKAGE_FLAGS', '0'
+        testApplicationId "com.facebook.react.tests.gradle"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
         externalNativeBuild {
             cmake {
                 cppFlags "-fexceptions"
@@ -19,6 +28,23 @@ android {
                 arguments "-DANDROID_TOOLCHAIN=gcc", "-DANDROID_STL=gnustl_static","-DANDROID_CPP_FEATURES=rtti exceptions"
             }
         }
+        sourceSets.main {
+            jni.srcDirs = []
+            jniLibs.srcDir "$buildDir/react-ndk/exported"
+            res.srcDirs += ['src/../../deps/react-native-0.56.0/ReactAndroid/src/main/res/devsupport',
+                           'src/../../deps/react-native-0.56.0/ReactAndroid/src/main/res/shell',
+                           'src/../../deps/react-native-0.56.0/ReactAndroid/src/main/res/views/modal',
+                           'src/../../deps/react-native-0.56.0/ReactAndroid/src/main/res/views/uimanager']
+            java {
+                srcDirs += ['src/../../deps/react-native-0.56.0/ReactAndroid/src/main/java',
+                           'src/../../deps/react-native-0.56.0/ReactAndroid/src/main/libraries/soloader/java',
+                           'src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/fb/jni/java']
+                exclude 'com/facebook/react/processing'
+                exclude 'com/facebook/react/module/processing'
+            }
+        }
+
+
     }
     buildTypes {
         release {
@@ -44,6 +70,10 @@ android {
         compileTask -> compileTask.dependsOn prepareNdkBuildDependencies
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 // We download various C++ open-source dependencies into downloads.
@@ -148,6 +178,28 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation fileTree(dir: 'src/../../deps/react-native-0.56.0/ReactAndroid/src/main/third-party/java/infer-annotations/', include: ['*.jar'])
+    implementation 'javax.inject:javax.inject:1'
+    implementation 'com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0'
+    implementation 'com.facebook.fresco:fresco:1.9.0'
+    implementation 'com.facebook.fresco:imagepipeline-okhttp3:1.9.0'
+    implementation 'com.facebook.soloader:soloader:0.3.0'
+    implementation 'com.google.code.findbugs:jsr305:3.0.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.10.0'
+    implementation 'com.squareup.okio:okio:1.14.0'
+
+    testImplementation "org.powermock:powermock-api-mockito:${POWERMOCK_VERSION}"
+    testImplementation "org.powermock:powermock-module-junit4-rule:${POWERMOCK_VERSION}"
+    testImplementation "org.powermock:powermock-classloading-xstream:${POWERMOCK_VERSION}"
+    testImplementation "org.mockito:mockito-core:${MOCKITO_CORE_VERSION}"
+    testImplementation "org.easytesting:fest-assert-core:${FEST_ASSERT_CORE_VERSION}"
+    testImplementation "org.robolectric:robolectric:${ROBOLECTRIC_VERSION}"
+
+    androidTestImplementation fileTree(dir: 'src/../../deps/react-native-0.56.0/ReactAndroid/src/main/third-party/java/buck-android-support/', include: ['*.jar'])
+    androidTestImplementation "org.mockito:mockito-core:${MOCKITO_CORE_VERSION}"
+
 }
 
 // build a jar with source files
