@@ -11,12 +11,12 @@ import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;
 
 @DoNotStrip
-/* package */ class JSCJavaScriptExecutor extends JavaScriptExecutor {
+public/* package */ class JSCJavaScriptExecutor extends JavaScriptExecutor {
   static {
     ReactBridge.staticInit();
   }
 
-  /* package */ JSCJavaScriptExecutor(ReadableNativeMap jscConfig) {
+  public/* package */ JSCJavaScriptExecutor(ReadableNativeMap jscConfig) {
     super(initHybrid(jscConfig));
   }
 

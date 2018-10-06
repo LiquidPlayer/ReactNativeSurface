@@ -33,13 +33,6 @@ static RCTSource *RCTSourceCreate(NSURL *url, NSData *data, int64_t length) NS_R
     return source;
 }
 
-@interface RCTBridge ()
-- (instancetype)initWithDelegate:(id<RCTBridgeDelegate>)delegate
-                       bundleURL:(NSURL *)bundleURL
-                  moduleProvider:(RCTBridgeModuleListProvider)block
-                   launchOptions:(NSDictionary *)launchOptions;
-@end
-
 @implementation LCReactNativeView
 {
     JSContext* jsContext_;

@@ -23,6 +23,10 @@ import com.facebook.react.common.ReactConstants;
 import com.facebook.react.common.annotations.VisibleForTesting;
 import com.facebook.systrace.Systrace;
 import com.facebook.systrace.TraceListener;
+
+import org.liquidplayer.javascript.JSContext;
+import org.liquidplayer.surfaces.reactnative.LiquidCoreReactQueueConfigurationImpl;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -67,7 +71,7 @@ public class CatalystInstanceImpl implements CatalystInstance {
   }
 
   // Access from any thread
-  private final ReactQueueConfigurationImpl mReactQueueConfiguration;
+  private final ReactQueueConfiguration mReactQueueConfiguration;
   private final CopyOnWriteArrayList<NotThreadSafeBridgeIdleDebugListener> mBridgeIdleListeners;
   private final AtomicInteger mPendingJSCalls = new AtomicInteger(0);
   private final String mJsPendingCallsTitleForTrace =
@@ -96,17 +100,26 @@ public class CatalystInstanceImpl implements CatalystInstance {
   private native static HybridData initHybrid();
 
   private CatalystInstanceImpl(
+      final JSContext jsContext,
       final ReactQueueConfigurationSpec reactQueueConfigurationSpec,
       final JavaScriptExecutor jsExecutor,
       final NativeModuleRegistry nativeModuleRegistry,
       final JSBundleLoader jsBundleLoader,
-      NativeModuleCallExceptionHandler nativeModuleCallExceptionHandler) {
+      NativeModuleCallExceptionHandler nativeModuleCallExceptionHandler
+      ) {
     Log.d(ReactConstants.TAG, "Initializing React Xplat Bridge.");
     mHybridData = initHybrid();
 
-    mReactQueueConfiguration = ReactQueueConfigurationImpl.create(
+    if (jsContext != null) {
+      mReactQueueConfiguration = LiquidCoreReactQueueConfigurationImpl.create(
+        jsContext,
         reactQueueConfigurationSpec,
         new NativeExceptionHandler());
+    } else {
+      mReactQueueConfiguration = ReactQueueConfigurationImpl.create(
+        reactQueueConfigurationSpec,
+        new NativeExceptionHandler());
+    }
     mBridgeIdleListeners = new CopyOnWriteArrayList<>();
     mNativeModuleRegistry = nativeModuleRegistry;
     mJSModuleRegistry = new JavaScriptModuleRegistry();
@@ -201,7 +214,7 @@ public class CatalystInstanceImpl implements CatalystInstance {
    * @param remoteURL A source URL that is accessible from the remote machine
    * executing the JS.
    */
-  /* package */ void setSourceURLs(String deviceURL, String remoteURL) {
+  public /* package */ void setSourceURLs(String deviceURL, String remoteURL) {
     mSourceURL = deviceURL;
     jniSetSourceURL(remoteURL);
   }
@@ -577,7 +590,7 @@ public class CatalystInstanceImpl implements CatalystInstance {
     private @Nullable NativeModuleRegistry mRegistry;
     private @Nullable JavaScriptExecutor mJSExecutor;
     private @Nullable NativeModuleCallExceptionHandler mNativeModuleCallExceptionHandler;
-
+    private @Nullable JSContext mJsContext;
 
     public Builder setReactQueueConfigurationSpec(
         ReactQueueConfigurationSpec ReactQueueConfigurationSpec) {
@@ -600,6 +613,11 @@ public class CatalystInstanceImpl implements CatalystInstance {
       return this;
     }
 
+    public Builder setJSContext(JSContext jsContext) {
+      mJsContext = jsContext;
+      return this;
+    }
+
     public Builder setNativeModuleCallExceptionHandler(
         NativeModuleCallExceptionHandler handler) {
       mNativeModuleCallExceptionHandler = handler;
@@ -608,6 +626,7 @@ public class CatalystInstanceImpl implements CatalystInstance {
 
     public CatalystInstanceImpl build() {
       return new CatalystInstanceImpl(
+          mJsContext,
           Assertions.assertNotNull(mReactQueueConfigurationSpec),
           Assertions.assertNotNull(mJSExecutor),
           Assertions.assertNotNull(mRegistry),
