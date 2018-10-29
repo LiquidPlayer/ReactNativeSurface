@@ -14,8 +14,8 @@ var React = require('react');
 var ReactNative = require('react-native');
 var {StyleSheet, Text, ToastAndroid, TouchableWithoutFeedback} = ReactNative;
 
-var RNTesterBlock = require('RNTesterBlock');
-var RNTesterPage = require('RNTesterPage');
+var RNTesterBlock = require('./RNTesterBlock');
+var RNTesterPage = require('./RNTesterPage');
 
 class ToastExample extends React.Component<{}, $FlowFixMeState> {
   static title = 'Toast Example';

@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 public class YogaNode implements Cloneable {
 
   static {
-      SoLoader.loadLibrary("yoga");
+//      SoLoader.loadLibrary("yoga");
   }
 
   /**

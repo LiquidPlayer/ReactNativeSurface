@@ -1,0 +1,9 @@
+include ':ReactNativeTestAndroid'
+include ':ReactNativeSurfaceAndroid'
+include ':LiquidCoreAndroid'
+
+project(':LiquidCoreAndroid').projectDir = new File(
+        rootProject.projectDir, '../../LiquidCore/LiquidCoreAndroid')
+
+project(':ReactNativeSurfaceAndroid').projectDir = new File(
+        rootProject.projectDir, '../ReactNativeSurfaceAndroid')

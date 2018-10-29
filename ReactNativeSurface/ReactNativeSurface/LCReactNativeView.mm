@@ -174,12 +174,15 @@ static RCTSource *RCTSourceCreate(NSURL *url, NSData *data, int64_t length) NS_R
     NSString *deviceName = [[UIDevice currentDevice] name];
     NSString *appName = [[NSBundle mainBundle] bundleIdentifier];
 
+    char sjsContext[32];
+    sprintf(sjsContext, "%lud", reinterpret_cast<unsigned long>(jsContext_.JSGlobalContextRef));
+
     auto factory = new facebook::react::JSCExecutorFactory(folly::dynamic::object
        ("OwnerIdentity", "ReactNative")
        ("AppIdentity", [(appName ?: @"unknown") UTF8String])
        ("DeviceIdentity", [(deviceName ?: @"unknown") UTF8String])
        ("UseCustomJSC", false)
-       ("UseContext", reinterpret_cast<uint64_t>(jsContext_.JSGlobalContextRef))
+       ("UseContext", sjsContext)
 #if RCT_PROFILE
 //       ("StartSamplingProfilerOnInit", (bool)bridge.devSettings.startSamplingProfilerOnLaunch)
 #endif

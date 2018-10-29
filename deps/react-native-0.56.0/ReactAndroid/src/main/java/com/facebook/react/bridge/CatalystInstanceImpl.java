@@ -25,7 +25,7 @@ import com.facebook.systrace.Systrace;
 import com.facebook.systrace.TraceListener;
 
 import org.liquidplayer.javascript.JSContext;
-import org.liquidplayer.surfaces.reactnative.LiquidCoreReactQueueConfigurationImpl;
+import org.liquidplayer.surface.reactnative.LiquidCoreReactQueueConfigurationImpl;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -216,7 +216,9 @@ public class CatalystInstanceImpl implements CatalystInstance {
    */
   public /* package */ void setSourceURLs(String deviceURL, String remoteURL) {
     mSourceURL = deviceURL;
-    jniSetSourceURL(remoteURL);
+    if (remoteURL != null) {
+      jniSetSourceURL(remoteURL);
+    }
   }
 
   @Override
@@ -224,7 +226,7 @@ public class CatalystInstanceImpl implements CatalystInstance {
     jniRegisterSegment(segmentId, path);
   }
 
-  /* package */ void loadScriptFromAssets(AssetManager assetManager, String assetURL, boolean loadSynchronously) {
+  public /* package */ void loadScriptFromAssets(AssetManager assetManager, String assetURL, boolean loadSynchronously) {
     mSourceURL = assetURL;
     jniLoadScriptFromAssets(assetManager, assetURL, loadSynchronously);
   }
@@ -242,7 +244,7 @@ public class CatalystInstanceImpl implements CatalystInstance {
     jniLoadScriptFromDeltaBundle(sourceURL, deltaClient, loadSynchronously);
   }
 
-  private native void jniSetSourceURL(String sourceURL);
+  /*private*/ public native void jniSetSourceURL(String sourceURL);
   private native void jniRegisterSegment(int segmentId, String path);
   private native void jniLoadScriptFromAssets(AssetManager assetManager, String assetURL, boolean loadSynchronously);
   private native void jniLoadScriptFromFile(String fileName, String sourceURL, boolean loadSynchronously);

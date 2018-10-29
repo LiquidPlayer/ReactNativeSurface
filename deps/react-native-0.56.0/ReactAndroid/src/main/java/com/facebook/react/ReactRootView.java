@@ -521,7 +521,9 @@ public class ReactRootView extends SizeMonitoringFrameLayout
         mShouldLogContentAppeared = true;
 
         String jsAppModuleName = getJSModuleName();
-        catalystInstance.getJSModule(AppRegistry.class).runApplication(jsAppModuleName, appParams);
+        if (jsAppModuleName.length() > 0) {
+          catalystInstance.getJSModule(AppRegistry.class).runApplication(jsAppModuleName, appParams);
+        }
       } finally {
         Systrace.endSection(TRACE_TAG_REACT_JAVA_BRIDGE);
       }

@@ -23,7 +23,7 @@ import com.facebook.soloader.SoLoader;
 public class HybridData {
 
   static {
-    SoLoader.loadLibrary("fb");
+//    SoLoader.loadLibrary("fb");
   }
 
   @DoNotStrip

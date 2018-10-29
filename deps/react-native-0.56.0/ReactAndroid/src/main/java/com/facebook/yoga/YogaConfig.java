@@ -16,7 +16,7 @@ public class YogaConfig {
   public static int SPACING_TYPE = 1;
 
   static {
-      SoLoader.loadLibrary("yoga");
+//      SoLoader.loadLibrary("yoga");
   }
 
   long mNativePointer;

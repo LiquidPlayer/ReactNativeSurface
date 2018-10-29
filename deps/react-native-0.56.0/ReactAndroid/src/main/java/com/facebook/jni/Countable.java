@@ -22,7 +22,7 @@ import com.facebook.soloader.SoLoader;
 public class Countable {
 
   static {
-    SoLoader.loadLibrary("fb");
+//    SoLoader.loadLibrary("fb");
   }
 
   // Private C++ instance

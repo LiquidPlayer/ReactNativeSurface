@@ -201,10 +201,12 @@ void JSCExecutor::initOnJSVMThread() throw(JSException) {
   configureJSCForAndroid(m_jscConfig);
 #endif
 
-  const int64_t jscUseContext =
-      m_jscConfig.getDefault("UseContext", 0).getInt();
+  std::string str_jsContext = m_jscConfig.getDefault("UseContext", "0").getString();
+  unsigned long ulContext = std::stoul (str_jsContext, nullptr, 10);
+  JSGlobalContextRef jscUseContext = reinterpret_cast<JSGlobalContextRef>(ulContext);
+
   if (jscUseContext) {
-    m_context = (JSGlobalContextRef) jscUseContext;
+    m_context = jscUseContext;
   } else {
     // Create a custom global class, so we can store data in it later using
     // JSObjectSetPrivate

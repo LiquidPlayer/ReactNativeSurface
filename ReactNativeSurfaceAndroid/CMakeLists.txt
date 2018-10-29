@@ -10,6 +10,7 @@ add_library( reactnativesurface
              src/main/cpp/ReactOnLoad.cpp
              src/main/cpp/fbOnLoad.cpp
              src/main/cpp/OnLoad.cpp
+             src/main/cpp/YGJNI.cpp
 
              # glog
              src/../build/third-party-ndk/glog/glog-0.3.5/src/demangle.cc
@@ -19,6 +20,7 @@ add_library( reactnativesurface
              src/../build/third-party-ndk/glog/glog-0.3.5/src/symbolize.cc
              src/../build/third-party-ndk/glog/glog-0.3.5/src/utilities.cc
              src/../build/third-party-ndk/glog/glog-0.3.5/src/vlog_is_on.cc
+             src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/fbgloginit/glog_init.cpp
 
              # folly
              src/../build/third-party-ndk/folly/folly/json.cpp
@@ -28,6 +30,18 @@ add_library( reactnativesurface
              src/../build/third-party-ndk/folly/folly/detail/MallocImpl.cpp
              src/../build/third-party-ndk/folly/folly/StringBase.cpp
              src/../build/third-party-ndk/folly/folly/dynamic.cpp
+
+             # yoga
+             src/../../deps/react-native-0.56.0/ReactCommon/yoga/yoga/Utils.cpp
+             src/../../deps/react-native-0.56.0/ReactCommon/yoga/yoga/YGEnums.cpp
+             src/../../deps/react-native-0.56.0/ReactCommon/yoga/yoga/YGLayout.cpp
+             src/../../deps/react-native-0.56.0/ReactCommon/yoga/yoga/YGNodePrint.cpp
+             src/../../deps/react-native-0.56.0/ReactCommon/yoga/yoga/Yoga.cpp
+             src/../../deps/react-native-0.56.0/ReactCommon/yoga/yoga/YGConfig.cpp
+             src/../../deps/react-native-0.56.0/ReactCommon/yoga/yoga/YGFloatOptional.cpp
+             src/../../deps/react-native-0.56.0/ReactCommon/yoga/yoga/YGNode.cpp
+             src/../../deps/react-native-0.56.0/ReactCommon/yoga/yoga/YGStyle.cpp
+#             src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/yogajni/jni/YGJNI.cpp
 
              # fb
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/fb/assert.cpp
@@ -46,9 +60,6 @@ add_library( reactnativesurface
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/fb/log.cpp
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/fb/lyra/lyra.cpp
 #             src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/fb/onload.cpp
-
-             # fbgloginit
-             src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/fbgloginit/glog_init.cpp
 
              # double-conversion
              src/../build/third-party-ndk/double-conversion/double-conversion/bignum.cc
@@ -117,7 +128,6 @@ add_library( reactnativesurface
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/react/jni/ReadableNativeMap.cpp
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/react/jni/WritableNativeArray.cpp
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/react/jni/WritableNativeMap.cpp
-
              )
 
 include_directories(
@@ -132,7 +142,8 @@ include_directories(
              src/../../deps/react-native-0.56.0/ReactCommon
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/fb/include
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/fbgloginit
-             src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/react/jni/
+             src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/react/jni
+             src/../../deps/react-native-0.56.0/ReactCommon/yoga
              )
 
 unset(DEFS_RELEASE)
@@ -144,6 +155,7 @@ list (APPEND DEFS_RELEASE
     -DFOLLY_NO_CONFIG=1
     -DFOLLY_HAVE_CLOCK_GETTIME=1
     -DFOLLY_HAVE_MEMRCHR=1
+    -DFOLLY_USE_LIBCPP
     -DHAVE_POSIX_CLOCKS
     -DDISABLE_CPUCAP
     -DDISABLE_XPLAT
@@ -156,6 +168,7 @@ list (APPEND CFLAGS_RELEASE
     -Wno-sign-compare
     -Wno-unused-local-typedefs
     -Wno-unused-variable
+    -Wno-unused-lambda-capture
     -DNDEBUG
     -g
     -O2
