@@ -19,13 +19,13 @@ import com.facebook.react.bridge.queue.QueueThreadExceptionHandler;
 import com.facebook.react.bridge.queue.ReactQueueConfiguration;
 import com.facebook.react.bridge.queue.ReactQueueConfigurationImpl;
 import com.facebook.react.bridge.queue.ReactQueueConfigurationSpec;
+import com.facebook.react.bridge.queue.LiquidCoreReactQueueConfigurationImpl;
 import com.facebook.react.common.ReactConstants;
 import com.facebook.react.common.annotations.VisibleForTesting;
 import com.facebook.systrace.Systrace;
 import com.facebook.systrace.TraceListener;
 
 import org.liquidplayer.javascript.JSContext;
-import org.liquidplayer.surface.reactnative.LiquidCoreReactQueueConfigurationImpl;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -244,7 +244,7 @@ public class CatalystInstanceImpl implements CatalystInstance {
     jniLoadScriptFromDeltaBundle(sourceURL, deltaClient, loadSynchronously);
   }
 
-  /*private*/ public native void jniSetSourceURL(String sourceURL);
+  public native void jniSetSourceURL(String sourceURL);
   private native void jniRegisterSegment(int segmentId, String path);
   private native void jniLoadScriptFromAssets(AssetManager assetManager, String assetURL, boolean loadSynchronously);
   private native void jniLoadScriptFromFile(String fileName, String sourceURL, boolean loadSynchronously);

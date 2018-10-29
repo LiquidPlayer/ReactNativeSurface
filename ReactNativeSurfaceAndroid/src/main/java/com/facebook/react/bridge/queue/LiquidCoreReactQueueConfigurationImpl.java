@@ -1,14 +1,7 @@
-package org.liquidplayer.surface.reactnative;
+package com.facebook.react.bridge.queue;
 
 import android.os.Looper;
-import android.support.annotation.Nullable;
 
-import com.facebook.react.bridge.queue.MessageQueueThread;
-import com.facebook.react.bridge.queue.MessageQueueThreadImpl;
-import com.facebook.react.bridge.queue.MessageQueueThreadSpec;
-import com.facebook.react.bridge.queue.QueueThreadExceptionHandler;
-import com.facebook.react.bridge.queue.ReactQueueConfiguration;
-import com.facebook.react.bridge.queue.ReactQueueConfigurationSpec;
 import com.facebook.react.common.MapBuilder;
 
 import org.liquidplayer.javascript.JSContext;

@@ -1,9 +1,4 @@
-package org.liquidplayer.surface.reactnative;
-
-import com.facebook.react.bridge.JSCJavaScriptExecutor;
-import com.facebook.react.bridge.JavaScriptExecutor;
-import com.facebook.react.bridge.JavaScriptExecutorFactory;
-import com.facebook.react.bridge.WritableNativeMap;
+package com.facebook.react.bridge;
 
 import org.liquidplayer.javascript.JSContext;
 
@@ -12,8 +7,8 @@ public class LiquidCoreJavaScriptExecutorFactory implements JavaScriptExecutorFa
     private final String mDeviceName;
     private final JSContext mNodeContext;
 
-    LiquidCoreJavaScriptExecutorFactory(String appName, String deviceName,
-                                               JSContext nodeContext) {
+    public LiquidCoreJavaScriptExecutorFactory(String appName, String deviceName,
+                                        JSContext nodeContext) {
         this.mAppName = appName;
         this.mDeviceName = deviceName;
         this.mNodeContext = nodeContext;
@@ -30,4 +25,5 @@ public class LiquidCoreJavaScriptExecutorFactory implements JavaScriptExecutorFa
 
         return new JSCJavaScriptExecutor(jscConfig);
     }
+
 }

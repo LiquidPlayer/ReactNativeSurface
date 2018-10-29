@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +19,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.CatalystInstanceImpl;
 import com.facebook.react.bridge.JSBundleLoader;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
+import com.facebook.react.bridge.LiquidCoreJavaScriptExecutorFactory;
 import com.facebook.react.common.LifecycleState;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
@@ -70,8 +70,8 @@ public class ReactNativeSurface extends RelativeLayout implements Surface {
         final Application application = ((Activity)getContext()).getApplication();
 
         SoLoader.init(application,false);
-        SoLoader.loadLibrary("reactnativesurface");
         SoLoader.loadLibrary("liquidcore");
+        SoLoader.loadLibrary("reactnativesurface");
         JSCShim.staticInit();
 
         final ReactNativeHost reactNativeHost = new ReactNativeHost(application) {

@@ -1,11 +1,8 @@
-package org.liquidplayer.surface.reactnative;
+package com.facebook.react.bridge.queue;
 
 import com.facebook.common.logging.FLog;
 import com.facebook.proguard.annotations.DoNotStrip;
 import com.facebook.react.bridge.SoftAssertions;
-import com.facebook.react.bridge.queue.MessageQueueThread;
-import com.facebook.react.bridge.queue.MessageQueueThreadSpec;
-import com.facebook.react.bridge.queue.QueueThreadExceptionHandler;
 import com.facebook.react.common.ReactConstants;
 import com.facebook.react.common.futures.SimpleSettableFuture;
 
