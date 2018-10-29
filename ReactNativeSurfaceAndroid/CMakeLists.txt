@@ -169,6 +169,7 @@ list (APPEND CFLAGS_RELEASE
     -Wno-unused-local-typedefs
     -Wno-unused-variable
     -Wno-unused-lambda-capture
+    -Wno-mismatched-tags
     -DNDEBUG
     -g
     -O2
