@@ -4,23 +4,22 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.facebook.react.BuildConfig;
-import com.facebook.react.R;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactInstanceManagerBuilder;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
+import com.facebook.react.ReactRootView;
 import com.facebook.react.bridge.CatalystInstanceImpl;
 import com.facebook.react.bridge.JSBundleLoader;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.bridge.LiquidCoreJavaScriptExecutorFactory;
 import com.facebook.react.common.LifecycleState;
+import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 
@@ -37,7 +36,8 @@ import java.util.List;
 
 import static com.facebook.react.modules.systeminfo.AndroidInfoHelpers.getFriendlyDeviceName;
 
-public class ReactNativeSurface extends RelativeLayout implements Surface {
+public class ReactNativeSurface extends ReactRootView
+        implements Surface, DefaultHardwareBackBtnHandler {
     @SuppressWarnings("unused")
     public static String SURFACE_VERSION = BuildConfig.VERSION_NAME;
 
@@ -51,7 +51,7 @@ public class ReactNativeSurface extends RelativeLayout implements Surface {
 
     public ReactNativeSurface(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        LayoutInflater.from(context).inflate(R.layout.surface_layout, this);
+        mDelegate = createReactActivityDelegate();
     }
 
     @Override
@@ -114,12 +114,11 @@ public class ReactNativeSurface extends RelativeLayout implements Surface {
 
             JSBundleLoader createAssetLoader(
                     final Context context,
-                    final String assetUrl,
-                    final boolean loadSynchronously) {
+                    final String assetUrl) {
                 return new JSBundleLoader() {
                     @Override
                     public String loadScript(CatalystInstanceImpl instance) {
-                        instance.loadScriptFromAssets(context.getAssets(), assetUrl, loadSynchronously);
+                        instance.loadScriptFromAssets(context.getAssets(), assetUrl, false);
                         instance.setSourceURLs(service.getServiceURI().toString(), null);
                         /* Ok, React Native binding is complete, let the startup code continue */
                         synchronizer.exit();
@@ -145,27 +144,22 @@ public class ReactNativeSurface extends RelativeLayout implements Surface {
                 }
 
                 JSBundleLoader bundleLoader = createAssetLoader(getContext(),
-                        getJSBundleUri(), true);
+                        getJSBundleUri());
                 builder.setJSBundleLoader(bundleLoader);
                 return builder.build();
             }
 
         };
+        mDelegate.setReactNativeHost(reactNativeHost);
 
-        LinearLayout ll = findViewById(R.id.llReactRootViewContainer);
-        final ReactNativeView reactNativeView = new ReactNativeView(getContext());
-        reactNativeView.getDelegate().setReactNativeHost(reactNativeHost);
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        reactNativeView.setLayoutParams(params);
-        reactNativeView.getDelegate().onCreate(null);
+        getDelegate().onCreate(null);
 
         final JSFunction startReactApplication =
                 new JSFunction(context, "startReactApplication") {
                     @SuppressWarnings("unused")
                     public void startReactApplication(String moduleName) {
                         if (moduleName != null) {
-                            reactNativeView.startApplicationFromJavascript(moduleName);
+                            startApplicationFromJavascript(moduleName);
                         }
                     }
                 };
@@ -173,10 +167,9 @@ public class ReactNativeSurface extends RelativeLayout implements Surface {
         reactnative.property("startReactApplication", startReactApplication);
         context.property("LiquidCore").toObject().property("reactnative", reactnative);
 
-        ll.addView(reactNativeView);
 
         // Module name will be set later by startApplicationFromJavascript
-        reactNativeView.startReactApplication(reactNativeHost.getReactInstanceManager(),
+        startReactApplication(reactNativeHost.getReactInstanceManager(),
                 "", null);
 
         /* Don't let the startup code complete until we have finished setting up ReactNative
@@ -195,6 +188,7 @@ public class ReactNativeSurface extends RelativeLayout implements Surface {
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         setLayoutParams(params);
+        mDelegate.onResume();
 
         onAttached.run();
         return this;
@@ -203,4 +197,72 @@ public class ReactNativeSurface extends RelativeLayout implements Surface {
     @Override
     public void detach() {
     }
+
+    private final LiquidCoreReactActivityDelegate mDelegate;
+
+    LiquidCoreReactActivityDelegate getDelegate() { return mDelegate; }
+
+
+    protected @javax.annotation.Nullable
+    String getMainComponentName() {
+        return null;
+    }
+
+    protected LiquidCoreReactActivityDelegate createReactActivityDelegate() {
+        return new LiquidCoreReactActivityDelegate(this, getMainComponentName());
+    }
+
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        mDelegate.onResume();
+        setFocusableInTouchMode(true);
+        requestFocus();
+    }
+
+    @Override
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        mDelegate.onPause();
+        setFocusableInTouchMode(false);
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event)
+    {
+        if (mDelegate != null && keyCode == KeyEvent.KEYCODE_BACK) {
+            if (!mDelegate.onBackPressed()) {
+                invokeDefaultOnBackPressed();
+                return true;
+            }
+        }
+        if (mDelegate != null) {
+            return mDelegate.onKeyUp(keyCode, event);
+        }
+        return super.onKeyUp(keyCode, event);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (mDelegate != null && keyCode != KeyEvent.KEYCODE_BACK) {
+            return mDelegate.onKeyDown(keyCode, event);
+        } else if (mDelegate != null) {
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public boolean onKeyLongPress(int keyCode, KeyEvent event) {
+        if (mDelegate != null) {
+            return mDelegate.onKeyLongPress(keyCode, event);
+        }
+        return super.onKeyLongPress(keyCode, event);
+    }
+
+    @Override
+    public void invokeDefaultOnBackPressed() {
+        ((Activity)getContext()).onBackPressed();
+    }
+
 }

@@ -9,17 +9,17 @@ import com.facebook.react.ReactNativeHost;
 import javax.annotation.Nullable;
 
 class LiquidCoreReactActivityDelegate extends ReactActivityDelegate {
-    private final ReactNativeView reactNativeView;
+    private final ReactNativeSurface reactNativeSurface;
     private ReactNativeHost host;
 
     void setReactNativeHost(ReactNativeHost host) {
         this.host = host;
     }
 
-    LiquidCoreReactActivityDelegate(ReactNativeView reactNativeView,
+    LiquidCoreReactActivityDelegate(ReactNativeSurface reactNativeSurface,
                                     @Nullable String mainComponentName) {
-        super((Activity) reactNativeView.getContext(), mainComponentName);
-        this.reactNativeView = reactNativeView;
+        super((Activity) reactNativeSurface.getContext(), mainComponentName);
+        this.reactNativeSurface = reactNativeSurface;
     }
 
     @Override
@@ -39,10 +39,10 @@ class LiquidCoreReactActivityDelegate extends ReactActivityDelegate {
 
     @Override
     public void onResume() {
-        if (getReactNativeHost().hasInstance()) {
+        if (getReactNativeHost() != null && getReactNativeHost().hasInstance()) {
             getReactNativeHost().getReactInstanceManager().onHostResume(
-                    (Activity) reactNativeView.getContext(),
-                    reactNativeView);
+                    (Activity) reactNativeSurface.getContext(),
+                    reactNativeSurface);
         }
     }
 
