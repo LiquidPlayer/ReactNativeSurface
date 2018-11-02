@@ -37,10 +37,10 @@ static RCTSource *RCTSourceCreate(NSURL *url, NSData *data, int64_t length) NS_R
 {
     JSContext* jsContext_;
     LCReactRootView *rootView_;
-    LCSynchronizer *synchronizer_;
     LCMicroService *service_;
     RCTBridge* attachedBridge_;
-    LCOnAttachedHandler attachedHandler_;
+    LCOnSuccessHandler attachedHandler_;
+    LCOnSuccessHandler boundHandler_;
 }
 
 + (NSString*) SURFACE_CANONICAL_NAME
@@ -74,26 +74,23 @@ static RCTSource *RCTSourceCreate(NSURL *url, NSData *data, int64_t length) NS_R
 
 #pragma - LCSurface
 
-- (void) bind:(LCMicroService*)service synchronizer:(LCSynchronizer*)synchronizer
+- (void) bind:(LCMicroService*)service
+       export:(JSValue *)exportObject
+       config:(JSValue *)config
+      onBound:(LCOnSuccessHandler)onBound
+      onError:(LCOnFailHandler)onError;
 {
-    /* Don't let the startup code complete until we have finished setting up ReactNative
-     * asynchronously.
-     */
-    [synchronizer enter];
-
     service_ = service;
+    boundHandler_ = onBound;
     [service.process async:^(JSContext *context) {
         self->jsContext_ = context;
         NSThread *jsThread = [NSThread currentThread];
-        self->synchronizer_ = synchronizer;
         
         auto startReactApplication = ^(NSString* moduleName) {
             NSLog(@"LiquidCore: startReactApplication (%@)", moduleName);
             [self->rootView_ runApplicationFromJavaScript:self->attachedBridge_ moduleName:moduleName];
         };
-        context[@"LiquidCore"][@"reactnative"] = @{
-            @"startReactApplication" : startReactApplication
-        };
+        exportObject[@"startReactApplication"] = startReactApplication;
 
         /*
          * ReactNative tries to overwrite global.console, but Node creates it with the read only
@@ -121,7 +118,9 @@ static RCTSource *RCTSourceCreate(NSURL *url, NSData *data, int64_t length) NS_R
     }
 }
 
-- (UIView*) attach:(LCMicroService*)service onAttached:(LCOnAttachedHandler)onAttachedHandler
+- (UIView<LCSurface>*) attach:(LCMicroService*)service
+                   onAttached:(LCOnSuccessHandler)onAttachedHandler
+                      onError:(LCOnFailHandler)onError;
 {
     if (attachedBridge_ != nil) {
         onAttachedHandler();
@@ -155,8 +154,8 @@ static RCTSource *RCTSourceCreate(NSURL *url, NSData *data, int64_t length) NS_R
         __weak JSContext* jsContext = context;
         context[deferred_fn] = ^{
             [jsContext.globalObject deleteProperty:deferred_fn];
-            [self->synchronizer_ exit];
-            self->synchronizer_ = nil;
+            self->boundHandler_();
+            self->boundHandler_ = nil;
         };
         
         NSString *code = [NSString stringWithFormat:@"global['%@']();", deferred_fn];

@@ -26,10 +26,10 @@ import com.facebook.soloader.SoLoader;
 import org.liquidplayer.javascript.JSContext;
 import org.liquidplayer.javascript.JSFunction;
 import org.liquidplayer.javascript.JSObject;
+import org.liquidplayer.javascript.JSValue;
 import org.liquidplayer.jscshim.JSCShim;
 import org.liquidplayer.service.MicroService;
 import org.liquidplayer.service.Surface;
-import org.liquidplayer.service.Synchronizer;
 
 import java.util.Collections;
 import java.util.List;
@@ -55,9 +55,8 @@ public class ReactNativeSurface extends ReactRootView
     }
 
     @Override
-    public void bind(final MicroService service, final JSContext context,
-                     final Synchronizer synchronizer) {
-
+    public void bind(final MicroService service, final JSContext context, final JSObject binding,
+                     final JSValue config, final Runnable onBound, final ReportErrorRunnable onError) {
         /*
          * ReactNative tries to overwrite global.console, but Node creates it with the read only
          * attribute set.  So we have to delete it first to remove the attribute.
@@ -70,7 +69,6 @@ public class ReactNativeSurface extends ReactRootView
         final Application application = ((Activity)getContext()).getApplication();
 
         SoLoader.init(application,false);
-        SoLoader.loadLibrary("liquidcore");
         SoLoader.loadLibrary("reactnativesurface");
         JSCShim.staticInit();
 
@@ -81,7 +79,7 @@ public class ReactNativeSurface extends ReactRootView
              */
             @Override
             public boolean getUseDeveloperSupport() {
-                return false;
+                return config != null && config.isObject() && config.toObject().property("dev").toBoolean();
             }
 
             @Override
@@ -121,7 +119,7 @@ public class ReactNativeSurface extends ReactRootView
                         instance.loadScriptFromAssets(context.getAssets(), assetUrl, false);
                         instance.setSourceURLs(service.getServiceURI().toString(), null);
                         /* Ok, React Native binding is complete, let the startup code continue */
-                        synchronizer.exit();
+                        onBound.run();
                         //return assetUrl;
                         return service.getServiceURI().toString();
                     }
@@ -163,19 +161,11 @@ public class ReactNativeSurface extends ReactRootView
                         }
                     }
                 };
-        final JSObject reactnative = new JSObject(context);
-        reactnative.property("startReactApplication", startReactApplication);
-        context.property("LiquidCore").toObject().property("reactnative", reactnative);
-
+        binding.property("startReactApplication", startReactApplication);
 
         // Module name will be set later by startApplicationFromJavascript
         startReactApplication(reactNativeHost.getReactInstanceManager(),
                 "", null);
-
-        /* Don't let the startup code complete until we have finished setting up ReactNative
-         * asynchronously.
-         */
-        synchronizer.enter();
     }
 
     @Override
@@ -184,7 +174,7 @@ public class ReactNativeSurface extends ReactRootView
     }
 
     @Override
-    public View attach(MicroService service, Runnable onAttached) {
+    public View attach(MicroService service, Runnable onAttached, ReportErrorRunnable onError) {
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         setLayoutParams(params);

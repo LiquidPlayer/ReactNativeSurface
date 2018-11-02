@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/liquidview"
-        app:liquidcore.URI="http://192.168.21.113:8081/RNTesterApp.android.bundle?platform=android"
+        app:liquidcore.URI="http://192.168.21.113:8081/RNTester.bundle?platform=android"
         />
 
 </android.support.constraint.ConstraintLayout>
