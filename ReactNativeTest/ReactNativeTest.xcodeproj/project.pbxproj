@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0708F0D82148F3A300F07EB4 /* ReactNativeSurface.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0760B24E214145AB003BC08B /* ReactNativeSurface.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0708F0DB2148F3F300F07EB4 /* LiquidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0708F0DA2148F3F300F07EB4 /* LiquidCore.framework */; };
-		0708F0DC2148F3F300F07EB4 /* LiquidCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0708F0DA2148F3F300F07EB4 /* LiquidCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0760B23C21414530003BC08B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0760B23B21414530003BC08B /* AppDelegate.swift */; };
 		0760B23E21414530003BC08B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0760B23D21414530003BC08B /* ViewController.swift */; };
 		0760B24121414530003BC08B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0760B23F21414530003BC08B /* Main.storyboard */; };
@@ -26,7 +24,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				0708F0D82148F3A300F07EB4 /* ReactNativeSurface.framework in Embed Frameworks */,
-				0708F0DC2148F3F300F07EB4 /* LiquidCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -34,7 +31,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0708F0DA2148F3F300F07EB4 /* LiquidCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LiquidCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07108D05214961110060A128 /* libRCTBlob.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRCTBlob.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0760B23821414530003BC08B /* ReactNativeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactNativeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0760B23B21414530003BC08B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,7 +48,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0760B24F214145AB003BC08B /* ReactNativeSurface.framework in Frameworks */,
-				0708F0DB2148F3F300F07EB4 /* LiquidCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +57,6 @@
 		0760B22F21414530003BC08B = {
 			isa = PBXGroup;
 			children = (
-				0708F0DA2148F3F300F07EB4 /* LiquidCore.framework */,
 				0760B23A21414530003BC08B /* ReactNativeTest */,
 				0760B23921414530003BC08B /* Products */,
 				0760B24D214145AB003BC08B /* Frameworks */,

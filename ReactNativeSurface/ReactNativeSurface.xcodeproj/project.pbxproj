@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0701A2F821AE879F002E82C6 /* LiquidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0701A2F721AE879F002E82C6 /* LiquidCore.framework */; };
 		07108CF0214948540060A128 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07108CEF214948540060A128 /* libART.a */; };
 		07108CF2214948540060A128 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07108CF1214948540060A128 /* libRCTActionSheet.a */; };
 		07108CF4214948540060A128 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07108CF3214948540060A128 /* libRCTAnimation.a */; };
@@ -26,7 +27,6 @@
 		0780CCCF2139886300B608F9 /* LCReactNativeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0780CCCD2139886300B608F9 /* LCReactNativeView.h */; };
 		0780CCD02139886300B608F9 /* LCReactNativeView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0780CCCE2139886300B608F9 /* LCReactNativeView.mm */; };
 		0780CCDA213FC82C00B608F9 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0780CCD9213FC82C00B608F9 /* libRCTWebSocket.a */; };
-		07D226CA21426651003B5D28 /* LiquidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D226C921426651003B5D28 /* LiquidCore.framework */; };
 		07D226CC2147D6A6003B5D28 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D226CB2147D6A6003B5D28 /* libRCTText.a */; };
 		07D226CF21480B7F003B5D28 /* LCReactRootView.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D226CD21480B7F003B5D28 /* LCReactRootView.h */; };
 		07D226D021480B7F003B5D28 /* LCReactRootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D226CE21480B7F003B5D28 /* LCReactRootView.m */; };
@@ -43,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0701A2F721AE879F002E82C6 /* LiquidCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LiquidCore.framework; path = ../Carthage/Build/iOS/LiquidCore.framework; sourceTree = "<group>"; };
 		07108CEF214948540060A128 /* libART.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libART.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		07108CF1214948540060A128 /* libRCTActionSheet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRCTActionSheet.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		07108CF3214948540060A128 /* libRCTAnimation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRCTAnimation.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,7 +75,6 @@
 		0780CCD5213FC44200B608F9 /* libthird-party.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libthird-party.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0780CCD7213FC4AB00B608F9 /* libcxxreact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libcxxreact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0780CCD9213FC82C00B608F9 /* libRCTWebSocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRCTWebSocket.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		07D226C921426651003B5D28 /* LiquidCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LiquidCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D226CB2147D6A6003B5D28 /* libRCTText.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRCTText.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D226CD21480B7F003B5D28 /* LCReactRootView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCReactRootView.h; sourceTree = "<group>"; };
 		07D226CE21480B7F003B5D28 /* LCReactRootView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCReactRootView.m; sourceTree = "<group>"; };
@@ -85,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0701A2F821AE879F002E82C6 /* LiquidCore.framework in Frameworks */,
 				0780CCC22139720E00B608F9 /* libReact.a in Frameworks */,
 				07108D04214948540060A128 /* libRCTVibration.a in Frameworks */,
 				07108D02214948540060A128 /* libRCTSettings.a in Frameworks */,
@@ -100,7 +101,6 @@
 				07D226CC2147D6A6003B5D28 /* libRCTText.a in Frameworks */,
 				07108CF6214948540060A128 /* libRCTBlob.a in Frameworks */,
 				07108D00214948540060A128 /* libRCTPushNotification.a in Frameworks */,
-				07D226CA21426651003B5D28 /* LiquidCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +159,7 @@
 		0780CCB52139705700B608F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0701A2F721AE879F002E82C6 /* LiquidCore.framework */,
 				07108D07214965B10060A128 /* libRCTLinking.a */,
 				0780CCC12139720E00B608F9 /* libReact.a */,
 				07108CEF214948540060A128 /* libART.a */,
@@ -183,7 +184,6 @@
 				0780CCBF2139720E00B608F9 /* libprivatedata.a */,
 				0780CCC32139720E00B608F9 /* libthird-party.a */,
 				0780CCC52139720E00B608F9 /* libyoga.a */,
-				07D226C921426651003B5D28 /* LiquidCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -212,6 +212,7 @@
 				0780CA102139600E00B608F9 /* Frameworks */,
 				0780CA112139600E00B608F9 /* Headers */,
 				0780CA122139600E00B608F9 /* Resources */,
+				0701A2F921AE87CA002E82C6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -291,6 +292,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0701A2F921AE87CA002E82C6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/LiquidCore.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/LiquidCore.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0780CA0F2139600E00B608F9 /* Sources */ = {
