@@ -1,10 +1,14 @@
 include ':ReactNativeTestAndroid'
 
 include ':ReactNativeSurfaceAndroid'
+
+/*
+// Uncomment To debug LiquidCore simultaneously
 include ':LiquidCoreAndroid'
 
 project(':LiquidCoreAndroid').projectDir = new File(
         rootProject.projectDir, '../../LiquidCore/LiquidCoreAndroid')
+*/
 
 project(':ReactNativeSurfaceAndroid').projectDir = new File(
         rootProject.projectDir, '../ReactNativeSurfaceAndroid')

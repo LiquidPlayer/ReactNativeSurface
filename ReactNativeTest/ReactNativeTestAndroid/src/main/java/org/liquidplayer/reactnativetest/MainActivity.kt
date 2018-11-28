@@ -11,10 +11,4 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
-
-    companion object {
-        init {
-            LiquidView.registerSurface(ReactNativeSurface::class.java);
-        }
-    }
 }

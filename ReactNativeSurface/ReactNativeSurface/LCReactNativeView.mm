@@ -100,6 +100,11 @@ static RCTSource *RCTSourceCreate(NSURL *url, NSData *data, int64_t length) NS_R
         [context[@"global"] deleteProperty:@"console"];
         context[@"global"][@"console"] = c;
         
+        /*
+         * Polyfill for Node's "Deprecation Warning: 'GLOBAL' is deprecated, use 'global'"
+         */
+        context[@"GLOBAL"] = context[@"global"];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             NSDictionary *launchOptions = @{ @"jsThread": jsThread };
             RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];

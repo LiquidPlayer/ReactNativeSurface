@@ -190,7 +190,10 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.10.0'
     implementation 'com.squareup.okio:okio:1.14.0'
 
+    implementation 'com.github.LiquidPlayer:LiquidCore:0.5.1'
+    /* or, for local debugging use:
     implementation project(':LiquidCoreAndroid')
+    */
 
     testImplementation "org.powermock:powermock-api-mockito:${POWERMOCK_VERSION}"
     testImplementation "org.powermock:powermock-module-junit4-rule:${POWERMOCK_VERSION}"

@@ -1,4 +1,5 @@
 const RNS = 'org.liquidplayer.surface.reactnative.ReactNativeSurface'
+const RN_CONFIG = { dev : false };
 
 // Don't import or require the React Native core at the global scope.  We
 // must set up the bindings first!
@@ -22,7 +23,7 @@ const start_microapp = (surface) => {
 }
 
 LiquidCore
-    .bind(RNS)
+    .bind(RNS, RN_CONFIG)
     .then(init_react)
     .then(start_microapp)
     .then(() => { 
