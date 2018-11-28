@@ -2,6 +2,9 @@
 
 A LiquidCore surface that exposes the React Native (v. 0.56) API.  This is a work in progress.
 
+[![](https://jitpack.io/v/LiquidPlayer/ReactNativeSurface.svg)](https://jitpack.io/#LiquidPlayer/ReactNativeSurface)
+
+
 ## Create a React Native project for use with LiquidCore
 
 Refer to the React Native documentation for how to get started with React Native.  This assumes you are already familiar with it.
