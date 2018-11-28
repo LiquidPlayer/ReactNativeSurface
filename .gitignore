@@ -5,7 +5,6 @@
 /.idea/libraries
 /.idea/caches
 .DS_Store
-/build
 /captures
 /projectFilesBackup
 .DS_Store
@@ -35,7 +34,6 @@ profile
 ####
 # Xcode build files
 DerivedData/
-build/
 Builds/
 
 #####
