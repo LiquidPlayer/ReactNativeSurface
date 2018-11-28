@@ -138,7 +138,7 @@ include_directories(
              src/../build/third-party-ndk/glog/glog-0.3.5/src
              src/../build/third-party-ndk/folly
              src/../build/third-party-ndk/double-conversion
-             src/../../deps/react-native-0.56.0/third-party/boost_1_63_0
+             src/../build/third-party-ndk/boost/boost_1_63_0
              src/../../deps/react-native-0.56.0/ReactCommon
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/fb/include
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/fbgloginit
