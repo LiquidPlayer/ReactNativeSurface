@@ -34,5 +34,7 @@ dependencies {
     //implementation project(':LiquidCoreAndroid')
     implementation 'com.github.LiquidPlayer:LiquidCore:0.5.1'
 
-    implementation project(':ReactNativeSurfaceAndroid')
+    //implementation project(':ReactNativeSurfaceAndroid')
+    implementation 'com.github.LiquidPlayer:ReactNativeSurface:0.56.0001'
+
 }
