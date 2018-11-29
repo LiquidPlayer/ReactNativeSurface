@@ -66,13 +66,27 @@ allprojects {
 ...
 ```
 
-Then, add the LiquidCore library to your **app's `build.gradle`**:
+Then, add the dependencies to your **app's `build.gradle`**:
 
 ```
 dependencies {
     ...
     implementation 'com.github.LiquidPlayer:LiquidCore:0.5.1'
-    implementation 'com.github.LiquidPlayer:ReactNativeSurface:0.56.0001'
+    implementation 'com.github.LiquidPlayer:ReactNativeSurface:0.56.0002'
+    
+    /*
+     * Note: You must also include these React Native dependencies.  In future
+     * releases, hopefully this won't be necessary.
+     */
+    implementation 'javax.inject:javax.inject:1'
+    implementation 'com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0'
+    implementation 'com.facebook.fresco:fresco:1.9.0'
+    implementation 'com.facebook.fresco:imagepipeline-okhttp3:1.9.0'
+    implementation 'com.facebook.soloader:soloader:0.3.0'
+    implementation 'com.google.code.findbugs:jsr305:3.0.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.10.0'
+    implementation 'com.squareup.okio:okio:1.14.0'
 }
 ```
 
@@ -82,7 +96,7 @@ dependencies {
 2. Create a [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile) that includes the following frameworks:
     ```
     git "git@github.com:LiquidPlayer/LiquidCore.git" ~> 0.5.1
-    git "git@github.com:LiquidPlayer/ReactNativeSurface.git" ~> 0.56.0001
+    git "git@github.com:LiquidPlayer/ReactNativeSurface.git" ~> 0.56.0002
     ```
 3. Run `carthage update`. This will fetch dependencies into a [Carthage/Checkouts](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#carthagecheckouts) folder, then build each one or download a pre-compiled framework.
 4. On your application targets’ _General_ settings tab, in the “Linked Frameworks and Libraries” section, drag and drop `LiquidCore.framework` and `ReactNativeSurface.framework` from the [Carthage/Build](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#carthagebuild) folder on disk.
