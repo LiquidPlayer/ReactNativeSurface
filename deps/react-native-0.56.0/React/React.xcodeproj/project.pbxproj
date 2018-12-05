@@ -264,7 +264,7 @@
 		2D0EB9F32021067800CAF88A /* RCTUIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EFDA4E201F660F00EE6E4C /* RCTUIUtils.m */; };
 		2D16E68E1FA4FD3900B85C8A /* RCTTVNavigationEventEmitter.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 3D0B842D1EC0B51200B2BD8E /* RCTTVNavigationEventEmitter.h */; };
 		2D1D83CD1F74E2CE00615550 /* libprivatedata-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9936F32F1F5F2E5B0010BF04 /* libprivatedata-tvOS.a */; };
-		2D1D83CE1F74E2DA00615550 /* libdouble-conversion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D383D621EBD27B9005632C8 /* libdouble-conversion.a */; };
+		2D1D83CE1F74E2DA00615550 /* libdouble-conversion-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D383D621EBD27B9005632C8 /* libdouble-conversion-tvOS.a */; };
 		2D1D83EF1F74E76C00615550 /* RCTModalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91076A871F743AB00081B4FA /* RCTModalManager.m */; };
 		2D3B5E931D9B087300451313 /* RCTErrorInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDCA8A41D3591E700450C31 /* RCTErrorInfo.m */; };
 		2D3B5E941D9B087900451313 /* RCTBundleURLProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EFE4ED1CF6EB3900A1DE13 /* RCTBundleURLProvider.m */; };
@@ -519,8 +519,8 @@
 		3D383D6D1EBD2940005632C8 /* libdouble-conversion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139D7E881E25C6D100323FB7 /* libdouble-conversion.a */; };
 		3D383D6E1EBD2940005632C8 /* libjschelpers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3CD90B1DE5FBD600167DC4 /* libjschelpers.a */; };
 		3D383D6F1EBD2940005632C8 /* libthird-party.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139D7ECE1E25DB7D00323FB7 /* libthird-party.a */; };
-		3D383D711EBD2949005632C8 /* libjschelpers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3CD9181DE5FBD800167DC4 /* libjschelpers.a */; };
-		3D383D721EBD2949005632C8 /* libthird-party.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D383D3C1EBD27B6005632C8 /* libthird-party.a */; };
+		3D383D711EBD2949005632C8 /* libjschelpers-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3CD9181DE5FBD800167DC4 /* libjschelpers-tvOS.a */; };
+		3D383D721EBD2949005632C8 /* libthird-party-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D383D3C1EBD27B6005632C8 /* libthird-party-tvOS.a */; };
 		3D3CD93D1DE5FC1400167DC4 /* JavaScriptCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D7A27DC1DE32541002E3F95 /* JavaScriptCore.h */; };
 		3D3CD93E1DE5FC1400167DC4 /* JSCWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D7A27DE1DE32541002E3F95 /* JSCWrapper.h */; };
 		3D3CD9411DE5FC5300167DC4 /* libcxxreact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3CD9251DE5FBEC00167DC4 /* libcxxreact.a */; };
@@ -766,8 +766,8 @@
 		3D80DA921DF820620028D040 /* RCTWrapperViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 13B080231A694A8400A75B9A /* RCTWrapperViewController.h */; };
 		3D80DA931DF820620028D040 /* UIView+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 83F15A171B7CC46900F10295 /* UIView+Private.h */; };
 		3D80DA941DF820620028D040 /* UIView+React.h in Headers */ = {isa = PBXBuildFile; fileRef = 13E067531A70F44B002CDEE1 /* UIView+React.h */; };
-		3D8ED92C1E5B120100D83D20 /* libcxxreact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3CD9321DE5FBEE00167DC4 /* libcxxreact.a */; };
-		3D8ED92D1E5B120100D83D20 /* libyoga.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3C06751DE3340C00C268FA /* libyoga.a */; };
+		3D8ED92C1E5B120100D83D20 /* libcxxreact-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3CD9321DE5FBEE00167DC4 /* libcxxreact-tvOS.a */; };
+		3D8ED92D1E5B120100D83D20 /* libyoga-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3C06751DE3340C00C268FA /* libyoga-tvOS.a */; };
 		3DA9819E1E5B0DBB004F2374 /* NSDataBigString.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D7454B31E54786200E74ADD /* NSDataBigString.h */; };
 		3DA981A01E5B0E34004F2374 /* CxxModule.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 3D92B0A71E03699D0018521A /* CxxModule.h */; };
 		3DA981A11E5B0E34004F2374 /* CxxNativeModule.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 3D92B0A91E03699D0018521A /* CxxNativeModule.h */; };
@@ -2071,7 +2071,7 @@
 		199B8A6E1F44DB16005DEF67 /* RCTVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTVersion.h; sourceTree = "<group>"; };
 		19DED2281E77E29200F089BB /* systemJSCWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = systemJSCWrapper.cpp; sourceTree = "<group>"; };
 		27B958731E57587D0096647A /* JSBigString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JSBigString.cpp; sourceTree = "<group>"; };
-		2D2A28131D9B038B00D4039D /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D2A28131D9B038B00D4039D /* libReact-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libReact-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		352DCFEE1D19F4C20056D623 /* RCTI18nUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTI18nUtil.h; sourceTree = "<group>"; };
 		352DCFEF1D19F4C20056D623 /* RCTI18nUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTI18nUtil.m; sourceTree = "<group>"; };
 		369123DF1DDC75850095B341 /* RCTJSCSamplingProfiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTJSCSamplingProfiler.h; sourceTree = "<group>"; };
@@ -2096,15 +2096,15 @@
 		3D1FA08D1DE4F4EE00E03CC6 /* RCTPushNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTPushNotificationManager.h; path = PushNotificationIOS/RCTPushNotificationManager.h; sourceTree = "<group>"; };
 		3D37B5801D522B190042D5B5 /* RCTFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RCTFont.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		3D37B5811D522B190042D5B5 /* RCTFont.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTFont.mm; sourceTree = "<group>"; };
-		3D383D3C1EBD27B6005632C8 /* libthird-party.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libthird-party.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3D383D621EBD27B9005632C8 /* libdouble-conversion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libdouble-conversion.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D383D3C1EBD27B6005632C8 /* libthird-party-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libthird-party-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D383D621EBD27B9005632C8 /* libdouble-conversion-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libdouble-conversion-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D3C059A1DE3340900C268FA /* libyoga.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libyoga.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		3D3C06751DE3340C00C268FA /* libyoga.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libyoga.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D3C06751DE3340C00C268FA /* libyoga-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libyoga-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D3CD8F51DE5FB2300167DC4 /* JSBundleType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBundleType.h; sourceTree = "<group>"; };
 		3D3CD90B1DE5FBD600167DC4 /* libjschelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjschelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		3D3CD9181DE5FBD800167DC4 /* libjschelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjschelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D3CD9181DE5FBD800167DC4 /* libjschelpers-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libjschelpers-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D3CD9251DE5FBEC00167DC4 /* libcxxreact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcxxreact.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		3D3CD9321DE5FBEE00167DC4 /* libcxxreact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcxxreact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D3CD9321DE5FBEE00167DC4 /* libcxxreact-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libcxxreact-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D7454781E54757500E74ADD /* JSBigString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBigString.h; sourceTree = "<group>"; };
 		3D7454791E54757500E74ADD /* RecoverableError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecoverableError.h; sourceTree = "<group>"; };
 		3D7454B31E54786200E74ADD /* NSDataBigString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataBigString.h; sourceTree = "<group>"; };
@@ -2345,12 +2345,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D1D83CE1F74E2DA00615550 /* libdouble-conversion.a in Frameworks */,
+				2D1D83CE1F74E2DA00615550 /* libdouble-conversion-tvOS.a in Frameworks */,
 				2D1D83CD1F74E2CE00615550 /* libprivatedata-tvOS.a in Frameworks */,
-				3D383D711EBD2949005632C8 /* libjschelpers.a in Frameworks */,
-				3D383D721EBD2949005632C8 /* libthird-party.a in Frameworks */,
-				3D8ED92C1E5B120100D83D20 /* libcxxreact.a in Frameworks */,
-				3D8ED92D1E5B120100D83D20 /* libyoga.a in Frameworks */,
+				3D383D711EBD2949005632C8 /* libjschelpers-tvOS.a in Frameworks */,
+				3D383D721EBD2949005632C8 /* libthird-party-tvOS.a in Frameworks */,
+				3D8ED92C1E5B120100D83D20 /* libcxxreact-tvOS.a in Frameworks */,
+				3D8ED92D1E5B120100D83D20 /* libyoga-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2913,17 +2913,17 @@
 			isa = PBXGroup;
 			children = (
 				83CBBA2E1A601D0E00E9B192 /* libReact.a */,
-				2D2A28131D9B038B00D4039D /* libReact.a */,
+				2D2A28131D9B038B00D4039D /* libReact-tvOS.a */,
 				3D3C059A1DE3340900C268FA /* libyoga.a */,
-				3D3C06751DE3340C00C268FA /* libyoga.a */,
+				3D3C06751DE3340C00C268FA /* libyoga-tvOS.a */,
 				3D3CD90B1DE5FBD600167DC4 /* libjschelpers.a */,
-				3D3CD9181DE5FBD800167DC4 /* libjschelpers.a */,
+				3D3CD9181DE5FBD800167DC4 /* libjschelpers-tvOS.a */,
 				3D3CD9251DE5FBEC00167DC4 /* libcxxreact.a */,
-				3D3CD9321DE5FBEE00167DC4 /* libcxxreact.a */,
+				3D3CD9321DE5FBEE00167DC4 /* libcxxreact-tvOS.a */,
 				139D7E881E25C6D100323FB7 /* libdouble-conversion.a */,
 				139D7ECE1E25DB7D00323FB7 /* libthird-party.a */,
-				3D383D3C1EBD27B6005632C8 /* libthird-party.a */,
-				3D383D621EBD27B9005632C8 /* libdouble-conversion.a */,
+				3D383D3C1EBD27B6005632C8 /* libthird-party-tvOS.a */,
+				3D383D621EBD27B9005632C8 /* libdouble-conversion-tvOS.a */,
 				9936F3131F5F2E4B0010BF04 /* libprivatedata.a */,
 				9936F32F1F5F2E5B0010BF04 /* libprivatedata-tvOS.a */,
 				EBF21BDC1FC498900052F4D5 /* libjsinspector.a */,
@@ -3729,7 +3729,7 @@
 			);
 			name = "React-tvOS";
 			productName = "React-tvOS";
-			productReference = 2D2A28131D9B038B00D4039D /* libReact.a */;
+			productReference = 2D2A28131D9B038B00D4039D /* libReact-tvOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		3D383D211EBD27B6005632C8 /* third-party-tvOS */ = {
@@ -3745,7 +3745,7 @@
 			);
 			name = "third-party-tvOS";
 			productName = "third-party";
-			productReference = 3D383D3C1EBD27B6005632C8 /* libthird-party.a */;
+			productReference = 3D383D3C1EBD27B6005632C8 /* libthird-party-tvOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		3D383D3D1EBD27B9005632C8 /* double-conversion-tvOS */ = {
@@ -3763,7 +3763,7 @@
 			);
 			name = "double-conversion-tvOS";
 			productName = ThirdParty;
-			productReference = 3D383D621EBD27B9005632C8 /* libdouble-conversion.a */;
+			productReference = 3D383D621EBD27B9005632C8 /* libdouble-conversion-tvOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		3D3C04B91DE3340900C268FA /* yoga */ = {
@@ -3797,7 +3797,7 @@
 			);
 			name = "yoga-tvOS";
 			productName = "React-tvOS";
-			productReference = 3D3C06751DE3340C00C268FA /* libyoga.a */;
+			productReference = 3D3C06751DE3340C00C268FA /* libyoga-tvOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		3D3CD8FF1DE5FBD600167DC4 /* jschelpers */ = {
@@ -3835,7 +3835,7 @@
 			);
 			name = "jschelpers-tvOS";
 			productName = "React-tvOS";
-			productReference = 3D3CD9181DE5FBD800167DC4 /* libjschelpers.a */;
+			productReference = 3D3CD9181DE5FBD800167DC4 /* libjschelpers-tvOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		3D3CD9191DE5FBEC00167DC4 /* cxxreact */ = {
@@ -3875,7 +3875,7 @@
 			);
 			name = "cxxreact-tvOS";
 			productName = "React-tvOS";
-			productReference = 3D3CD9321DE5FBEE00167DC4 /* libcxxreact.a */;
+			productReference = 3D3CD9321DE5FBEE00167DC4 /* libcxxreact-tvOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		83CBBA2D1A601D0E00E9B192 /* React */ = {
@@ -4806,7 +4806,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = React;
+				PRODUCT_NAME = "React-tvOS";
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/React;
 				SDKROOT = appletvos;
 			};
@@ -4825,7 +4825,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = React;
+				PRODUCT_NAME = "React-tvOS";
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/React;
 				SDKROOT = appletvos;
 			};
@@ -4843,7 +4843,7 @@
 				DEVELOPMENT_TEAM = V9WTTPBFK9;
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "third-party";
+				PRODUCT_NAME = "third-party-tvOS";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -4863,7 +4863,7 @@
 				DEVELOPMENT_TEAM = V9WTTPBFK9;
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "third-party";
+				PRODUCT_NAME = "third-party-tvOS";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -4881,7 +4881,7 @@
 				DEVELOPMENT_TEAM = V9WTTPBFK9;
 				OTHER_LDFLAGS = "-ObjC";
 				PRIVATE_HEADERS_FOLDER_PATH = "/usr/local/include/double-conversion";
-				PRODUCT_NAME = "double-conversion";
+				PRODUCT_NAME = "double-conversion-tvOS";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 			};
@@ -4899,7 +4899,7 @@
 				DEVELOPMENT_TEAM = V9WTTPBFK9;
 				OTHER_LDFLAGS = "-ObjC";
 				PRIVATE_HEADERS_FOLDER_PATH = "/usr/local/include/double-conversion";
-				PRODUCT_NAME = "double-conversion";
+				PRODUCT_NAME = "double-conversion-tvOS";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 			};
@@ -4944,7 +4944,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = yoga;
+				PRODUCT_NAME = "yoga-tvOS";
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/yoga;
 				SDKROOT = appletvos;
 			};
@@ -4962,7 +4962,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = yoga;
+				PRODUCT_NAME = "yoga-tvOS";
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/yoga;
 				SDKROOT = appletvos;
 			};
@@ -5010,7 +5010,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = jschelpers;
+				PRODUCT_NAME = "jschelpers-tvOS";
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/jschelpers;
 				SDKROOT = appletvos;
 			};
@@ -5029,7 +5029,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = jschelpers;
+				PRODUCT_NAME = "jschelpers-tvOS";
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/jschelpers;
 				SDKROOT = appletvos;
 			};
@@ -5077,7 +5077,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = cxxreact;
+				PRODUCT_NAME = "cxxreact-tvOS";
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/cxxreact;
 				SDKROOT = appletvos;
 			};
@@ -5096,7 +5096,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = cxxreact;
+				PRODUCT_NAME = "cxxreact-tvOS";
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/cxxreact;
 				SDKROOT = appletvos;
 			};
@@ -5194,6 +5194,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TVOS_DEPLOYMENT_TARGET = 9.2;

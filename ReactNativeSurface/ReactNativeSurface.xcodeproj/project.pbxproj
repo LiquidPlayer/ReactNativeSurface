@@ -454,6 +454,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -500,7 +501,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.liquidplayer.ReactNativeSurface;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SYSTEM_HEADER_SEARCH_PATHS = "../deps/react-native-0.56/includes";
+				SYSTEM_HEADER_SEARCH_PATHS = "$(TARGET_BUILD_DIR)/include";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -544,7 +545,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.liquidplayer.ReactNativeSurface;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SYSTEM_HEADER_SEARCH_PATHS = "../deps/react-native-0.56/includes";
+				SYSTEM_HEADER_SEARCH_PATHS = "$(TARGET_BUILD_DIR)/include";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
