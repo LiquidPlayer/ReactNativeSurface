@@ -92,9 +92,6 @@ dependencies {
 
 #### iOS
 
-**IMPORTANT: The carthage build is not working at the moment, but building from within XCode does work.  I am working
-on it.**
-
 1. Install Carthage as described [here](https://github.com/Carthage/Carthage/blob/master/README.md#installing-carthage).
 2. Create a [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile) that includes the following frameworks:
     ```
