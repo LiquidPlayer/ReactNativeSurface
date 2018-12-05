@@ -38,7 +38,7 @@
       location = "group:../deps/react-native-0.56.0/Libraries/LinkingIOS/RCTLinking.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../../../tmp/react-native-0.56.0/Libraries/Text/RCTText.xcodeproj">
+      location = "group:../deps/react-native-0.56.0/Libraries/Text/RCTText.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../deps/react-native-0.56.0/Libraries/Blob/RCTBlob.xcodeproj">
