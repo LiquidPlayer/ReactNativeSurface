@@ -72,7 +72,7 @@ Then, add the dependencies to your **app's `build.gradle`**:
 dependencies {
     ...
     implementation 'com.github.LiquidPlayer:LiquidCore:0.5.1'
-    implementation 'com.github.LiquidPlayer:ReactNativeSurface:0.56.0003'
+    implementation 'com.github.LiquidPlayer:ReactNativeSurface:0.56.0004'
     
     /*
      * Note: You must also include these React Native dependencies.  In future
@@ -96,7 +96,7 @@ dependencies {
 2. Create a [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile) that includes the following frameworks:
     ```
     git "git@github.com:LiquidPlayer/LiquidCore.git" ~> 0.5.1
-    git "git@github.com:LiquidPlayer/ReactNativeSurface.git" ~> 0.56.0003
+    git "git@github.com:LiquidPlayer/ReactNativeSurface.git" ~> 0.56.0004
     ```
 3. Run `carthage update`. This will fetch dependencies into a [Carthage/Checkouts](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#carthagecheckouts) folder, then build each one or download a pre-compiled framework.
 4. On your application targets’ _General_ settings tab, in the “Linked Frameworks and Libraries” section, drag and drop `LiquidCore.framework` and `ReactNativeSurface.framework` from the [Carthage/Build](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#carthagebuild) folder on disk.
