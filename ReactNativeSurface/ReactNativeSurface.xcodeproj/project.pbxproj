@@ -208,11 +208,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0780CA282139600E00B608F9 /* Build configuration list for PBXNativeTarget "ReactNativeSurface" */;
 			buildPhases = (
+				0701A2F921AE87CA002E82C6 /* ShellScript */,
 				0780CA0F2139600E00B608F9 /* Sources */,
 				0780CA102139600E00B608F9 /* Frameworks */,
 				0780CA112139600E00B608F9 /* Headers */,
 				0780CA122139600E00B608F9 /* Resources */,
-				0701A2F921AE87CA002E82C6 /* ShellScript */,
 			);
 			buildRules = (
 			);
