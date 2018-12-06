@@ -10,7 +10,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 27
         versionCode 56
-        versionName "0.56.0005"
+        versionName "0.56.0006"
 
         ndk {
             moduleName "reactnativesurface"

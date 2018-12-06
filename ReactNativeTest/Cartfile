@@ -1,2 +1,0 @@
-git "git@github.com:LiquidPlayer/LiquidCore.git" ~> 0.5.1
-github "LiquidPlayer/ReactNativeSurface" "master"
