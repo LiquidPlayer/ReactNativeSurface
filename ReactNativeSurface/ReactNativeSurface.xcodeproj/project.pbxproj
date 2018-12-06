@@ -480,6 +480,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../Carthage/Checkouts/LiquidCore/LiquidCoreiOS",
+					"$(PROJECT_DIR)/../Certhage/Build/iOS/LiquidCore.framework",
 					"$(PROJECT_DIR)/../deps/react-native-0.56.0/third-party/folly-2016.10.31.00",
 					"$(PROJECT_DIR)/../deps/react-native-0.56.0/third-party/glog-0.3.4/src",
 					"$(PROJECT_DIR)/../deps/react-native-0.56.0/third-party/boost_1_63_0",
@@ -524,6 +525,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../Carthage/Checkouts/LiquidCore/LiquidCoreiOS",
+					"$(PROJECT_DIR)/../Certhage/Build/iOS/LiquidCore.framework",
 					"$(PROJECT_DIR)/../deps/react-native-0.56.0/third-party/folly-2016.10.31.00",
 					"$(PROJECT_DIR)/../deps/react-native-0.56.0/third-party/glog-0.3.4/src",
 					"$(PROJECT_DIR)/../deps/react-native-0.56.0/third-party/boost_1_63_0",
