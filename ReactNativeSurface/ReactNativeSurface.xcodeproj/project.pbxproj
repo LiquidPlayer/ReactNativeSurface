@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0701A2F821AE879F002E82C6 /* LiquidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0701A2F721AE879F002E82C6 /* LiquidCore.framework */; };
 		07108CF0214948540060A128 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07108CEF214948540060A128 /* libART.a */; };
 		07108CF2214948540060A128 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07108CF1214948540060A128 /* libRCTActionSheet.a */; };
 		07108CF4214948540060A128 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07108CF3214948540060A128 /* libRCTAnimation.a */; };
@@ -30,6 +29,7 @@
 		07D226CC2147D6A6003B5D28 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D226CB2147D6A6003B5D28 /* libRCTText.a */; };
 		07D226CF21480B7F003B5D28 /* LCReactRootView.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D226CD21480B7F003B5D28 /* LCReactRootView.h */; };
 		07D226D021480B7F003B5D28 /* LCReactRootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D226CE21480B7F003B5D28 /* LCReactRootView.m */; };
+		07E001E921B91E950088E79C /* LiquidCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E001E821B91E950088E79C /* LiquidCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +43,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0701A2F721AE879F002E82C6 /* LiquidCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LiquidCore.framework; path = ../Carthage/Build/iOS/LiquidCore.framework; sourceTree = "<group>"; };
 		07108CEF214948540060A128 /* libART.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libART.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		07108CF1214948540060A128 /* libRCTActionSheet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRCTActionSheet.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		07108CF3214948540060A128 /* libRCTAnimation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRCTAnimation.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +77,7 @@
 		07D226CB2147D6A6003B5D28 /* libRCTText.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRCTText.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D226CD21480B7F003B5D28 /* LCReactRootView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCReactRootView.h; sourceTree = "<group>"; };
 		07D226CE21480B7F003B5D28 /* LCReactRootView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCReactRootView.m; sourceTree = "<group>"; };
+		07E001E821B91E950088E79C /* LiquidCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LiquidCore.framework; path = ../Carthage/Build/iOS/LiquidCore.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0701A2F821AE879F002E82C6 /* LiquidCore.framework in Frameworks */,
+				07E001E921B91E950088E79C /* LiquidCore.framework in Frameworks */,
 				0780CCC22139720E00B608F9 /* libReact.a in Frameworks */,
 				07108D04214948540060A128 /* libRCTVibration.a in Frameworks */,
 				07108D02214948540060A128 /* libRCTSettings.a in Frameworks */,
@@ -159,7 +159,7 @@
 		0780CCB52139705700B608F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0701A2F721AE879F002E82C6 /* LiquidCore.framework */,
+				07E001E821B91E950088E79C /* LiquidCore.framework */,
 				07108D07214965B10060A128 /* libRCTLinking.a */,
 				0780CCC12139720E00B608F9 /* libReact.a */,
 				07108CEF214948540060A128 /* libART.a */,
@@ -302,7 +302,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/LiquidCore.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/LiquidCore.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -476,10 +476,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
 				);
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Carthage/Checkouts/LiquidCore/LiquidCoreiOS",
+					"$(PROJECT_DIR)/../Carthage/Checkouts/LiquidCore/LiquidCoreiOS",
 					"$(PROJECT_DIR)/../deps/react-native-0.56.0/third-party/folly-2016.10.31.00",
 					"$(PROJECT_DIR)/../deps/react-native-0.56.0/third-party/glog-0.3.4/src",
 					"$(PROJECT_DIR)/../deps/react-native-0.56.0/third-party/boost_1_63_0",
@@ -520,10 +520,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
 				);
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Carthage/Checkouts/LiquidCore/LiquidCoreiOS",
+					"$(PROJECT_DIR)/../Carthage/Checkouts/LiquidCore/LiquidCoreiOS",
 					"$(PROJECT_DIR)/../deps/react-native-0.56.0/third-party/folly-2016.10.31.00",
 					"$(PROJECT_DIR)/../deps/react-native-0.56.0/third-party/glog-0.3.4/src",
 					"$(PROJECT_DIR)/../deps/react-native-0.56.0/third-party/boost_1_63_0",
