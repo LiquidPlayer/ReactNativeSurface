@@ -3,7 +3,7 @@
 A LiquidCore surface that exposes the React Native (v. 0.56) API.  This is a work in progress.
 
 [![](https://jitpack.io/v/LiquidPlayer/ReactNativeSurface.svg)](https://jitpack.io/#LiquidPlayer/ReactNativeSurface)
-
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ## Create a React Native project for use with LiquidCore
 
