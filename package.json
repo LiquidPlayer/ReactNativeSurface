@@ -1,0 +1,46 @@
+{
+  "name": "@liquidcore/react-native",
+  "version": "0.56.0.1",
+  "description": "React Native 0.56.0 plugin for caraml",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiquidPlayer/ReactNativeSurface.git"
+  },
+  "author": "Eric Lange <eric@flicket.tv>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LiquidPlayer/ReactNativeSurface/issues"
+  },
+  "homepage": "https://github.com/LiquidPlayer/ReactNativeSurface",
+  "dependencies": {
+    "@liquidcore/caraml-core": "^0.1.2",
+    "bindings": "^1.5.0",
+    "react-native": "0.56.0"
+  },
+  "liquidcore-addon": {
+    "android-dev": "ReactNativeSurfaceAndroid",
+    "ios-dev": [{
+      "name": "React",
+      "path": "React.podspec",
+      "subspecs": ["Core","CxxBridge","DevSupport","RCTText","RCTNetwork","RCTWebSocket",
+        "RCTAnimation","ART","RCTActionSheet","RCTBlob","RCTCameraRoll","RCTGeolocation",
+        "RCTImage","RCTNetwork","RCTPushNotification","RCTSettings","RCTVibration"]
+    },{
+      "name": "yoga",
+      "path": "deps/react-native-0.56.0/ReactCommon/yoga/yoga.podspec"
+    },{
+      "name": "DoubleConversion",
+      "podspec": "deps/react-native-0.56.0/third-party-podspecs/DoubleConversion.podspec"
+    },{
+      "name": "glog",
+      "podspec": "deps/react-native-0.56.0/third-party-podspecs/glog.podspec"
+    },{
+      "name": "Folly",
+      "podspec": "deps/react-native-0.56.0/third-party-podspecs/Folly.podspec"
+    }]
+  }
+}

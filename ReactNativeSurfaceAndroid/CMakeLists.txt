@@ -1,12 +1,16 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
-add_library( reactnativesurface
+add_library( react-native.node
              SHARED
 
              # JavaScriptCore -> V8 bridge
-             src/main/cpp/JSCShim.cpp
              src/main/cpp/JSCUnimplemented.cpp
+
+             # node addon
+             src/../../src/react-native.cpp
+
+             # OnLoad
              src/main/cpp/ReactOnLoad.cpp
              src/main/cpp/fbOnLoad.cpp
              src/main/cpp/OnLoad.cpp
@@ -41,7 +45,6 @@ add_library( reactnativesurface
              src/../../deps/react-native-0.56.0/ReactCommon/yoga/yoga/YGFloatOptional.cpp
              src/../../deps/react-native-0.56.0/ReactCommon/yoga/yoga/YGNode.cpp
              src/../../deps/react-native-0.56.0/ReactCommon/yoga/yoga/YGStyle.cpp
-#             src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/yogajni/jni/YGJNI.cpp
 
              # fb
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/fb/assert.cpp
@@ -59,7 +62,6 @@ add_library( reactnativesurface
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/fb/jni/WeakReference.cpp
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/fb/log.cpp
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/fb/lyra/lyra.cpp
-#             src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/fb/onload.cpp
 
              # double-conversion
              src/../build/third-party-ndk/double-conversion/double-conversion/bignum.cc
@@ -122,7 +124,6 @@ add_library( reactnativesurface
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/react/jni/NativeCommon.cpp
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/react/jni/NativeDeltaClient.cpp
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/react/jni/NativeMap.cpp
-#             src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/react/jni/OnLoad.cpp
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/react/jni/ProxyExecutor.cpp
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/react/jni/ReadableNativeArray.cpp
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/react/jni/ReadableNativeMap.cpp
@@ -131,7 +132,6 @@ add_library( reactnativesurface
              )
 
 include_directories(
-             src/../../deps
              src/../../deps/react-native-0.56.0
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/third-party/glog
              src/../build/third-party-ndk
@@ -144,7 +144,11 @@ include_directories(
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/first-party/fbgloginit
              src/../../deps/react-native-0.56.0/ReactAndroid/src/main/jni/react/jni
              src/../../deps/react-native-0.56.0/ReactCommon/yoga
-             )
+
+             build/liquidcore-addon/include/node
+             build/liquidcore-addon/include/v8
+             build/liquidcore-addon/include/
+            )
 
 unset(DEFS_RELEASE)
 unset(CFLAGS_RELEASE)
@@ -193,7 +197,31 @@ find_library( log-lib
 find_library( android-lib
               android )
 
-target_link_libraries( reactnativesurface
-                       ${log-lib}
-                       ${android-lib}
-                       )
+add_library(
+        node-lib
+        SHARED
+        IMPORTED
+)
+add_library(
+        liquidcore-lib
+        SHARED
+        IMPORTED
+)
+set_target_properties(
+        node-lib
+        PROPERTIES IMPORTED_LOCATION
+        ${PROJECT_SOURCE_DIR}/build/liquidcore-addon/jni/${ANDROID_ABI}/libnode.so
+)
+set_target_properties(
+        liquidcore-lib
+        PROPERTIES IMPORTED_LOCATION
+        ${PROJECT_SOURCE_DIR}/build/liquidcore-addon/jni/${ANDROID_ABI}/libliquidcore.so
+)
+
+target_link_libraries(
+        react-native.node
+        ${log-lib}
+        ${android-lib}
+        node-lib
+        liquidcore-lib
+)

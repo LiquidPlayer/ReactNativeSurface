@@ -2,13 +2,16 @@ include ':ReactNativeTestAndroid'
 
 include ':ReactNativeSurfaceAndroid'
 
-/*
+include ':leveldown-android'
+
 // Uncomment To debug LiquidCore simultaneously
 include ':LiquidCoreAndroid'
 
 project(':LiquidCoreAndroid').projectDir = new File(
         rootProject.projectDir, '../../LiquidCore/LiquidCoreAndroid')
-*/
 
 project(':ReactNativeSurfaceAndroid').projectDir = new File(
         rootProject.projectDir, '../ReactNativeSurfaceAndroid')
+
+project(':leveldown-android').projectDir = new File(
+        rootProject.projectDir, '../../plugins/leveldown/leveldown-android')

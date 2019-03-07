@@ -4,6 +4,11 @@ apply plugin: 'de.undercouch.download'
 
 import org.apache.tools.ant.filters.ReplaceTokens
 
+def MOCKITO_CORE_VERSION="1.10.19"
+def POWERMOCK_VERSION="1.6.2"
+def ROBOLECTRIC_VERSION="3.0"
+def FEST_ASSERT_CORE_VERSION="2.0M10"
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -140,7 +145,7 @@ task downloadFolly(dependsOn: createNativeDepsDirectories, type: Download) {
     src 'https://github.com/facebook/folly/archive/v2016.10.31.00.tar.gz'
     onlyIfNewer true
     overwrite false
-    dest new File(downloadsDir, 'folly-2016.10.31.00.tar.gz');
+    dest new File(downloadsDir, 'folly-2016.10.31.00.tar.gz')
 }
 
 task prepareFolly(dependsOn: dependenciesPath ? [] : [downloadFolly], type: Copy) {
@@ -196,6 +201,10 @@ task prepareNdkBuildDependencies {
     dependsOn prepareGlog
 }
 
+configurations {
+    liquidcore {}
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:27.1.1'
@@ -209,15 +218,25 @@ dependencies {
     implementation 'com.facebook.fresco:fresco:1.9.0'
     implementation 'com.facebook.fresco:imagepipeline-okhttp3:1.9.0'
     implementation 'com.facebook.soloader:soloader:0.3.0'
-    implementation 'com.google.code.findbugs:jsr305:3.0.0'
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.10.0'
     implementation 'com.squareup.okio:okio:1.14.0'
 
-    implementation 'com.github.LiquidPlayer:LiquidCore:0.5.1'
-    /* or, for local debugging use:
-    implementation project(':LiquidCoreAndroid')
-    */
+    if (findProject(':LiquidCore') != null) {
+        liquidcore project(path: ':LiquidCore', configuration: 'default')
+        implementation project(':LiquidCore')
+    } else {
+        liquidcore 'com.github.LiquidPlayer:LiquidCore:0.6.0'
+        implementation 'com.github.LiquidPlayer:LiquidCore:0.6.0'
+    }
+    /* AddOn: caraml-core */
+    if (findProject(':caraml-core') != null) {
+        implementation project(':caraml-core')
+    } else {
+        implementation fileTree(include:['caraml-core-release.aar'], dir:new File(rootProject.projectDir, 'node_modules/@liquidcore/caraml-core/release'))
+    }
+
 
     testImplementation "org.powermock:powermock-api-mockito:${POWERMOCK_VERSION}"
     testImplementation "org.powermock:powermock-module-junit4-rule:${POWERMOCK_VERSION}"
@@ -229,6 +248,28 @@ dependencies {
     androidTestImplementation fileTree(dir: 'src/../../deps/react-native-0.56.0/ReactAndroid/src/main/third-party/java/buck-android-support/', include: ['*.jar'])
     androidTestImplementation "org.mockito:mockito-core:${MOCKITO_CORE_VERSION}"
 
+}
+
+task extractAddOnLibsAndHeaders(type: Sync) {
+    dependsOn configurations.liquidcore
+
+    from {
+        configurations.liquidcore.collect {zipTree(it)}
+    }
+    include "jni/**/*.so", "include/**/*"
+    into "build/liquidcore-addon"
+}
+
+afterEvaluate {
+    def addon = file('build/liquidcore-addon')
+    if (!addon.exists()) {
+        if (project.hasProperty("externalNativeBuildDebug")) {
+            externalNativeBuildDebug.dependsOn extractAddOnLibsAndHeaders
+        }
+        if (project.hasProperty("externalNativeBuildRelease")) {
+            externalNativeBuildRelease.dependsOn extractAddOnLibsAndHeaders
+        }
+    }
 }
 
 // build a jar with source files

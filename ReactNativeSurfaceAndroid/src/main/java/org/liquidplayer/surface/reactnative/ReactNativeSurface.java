@@ -3,10 +3,13 @@ package org.liquidplayer.surface.reactnative;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.facebook.react.BuildConfig;
 import com.facebook.react.ReactInstanceManager;
@@ -21,15 +24,12 @@ import com.facebook.react.bridge.LiquidCoreJavaScriptExecutorFactory;
 import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
-import com.facebook.soloader.SoLoader;
 
 import org.liquidplayer.javascript.JSContext;
 import org.liquidplayer.javascript.JSFunction;
 import org.liquidplayer.javascript.JSObject;
 import org.liquidplayer.javascript.JSValue;
-import org.liquidplayer.jscshim.JSCShim;
 import org.liquidplayer.service.MicroService;
-import org.liquidplayer.service.Surface;
 
 import java.util.Collections;
 import java.util.List;
@@ -37,9 +37,7 @@ import java.util.List;
 import static com.facebook.react.modules.systeminfo.AndroidInfoHelpers.getFriendlyDeviceName;
 
 public class ReactNativeSurface extends ReactRootView
-        implements Surface, DefaultHardwareBackBtnHandler {
-    @SuppressWarnings("unused")
-    public static String SURFACE_VERSION = BuildConfig.VERSION_NAME;
+        implements DefaultHardwareBackBtnHandler {
 
     public ReactNativeSurface(Context context) {
         this(context, null);
@@ -54,9 +52,18 @@ public class ReactNativeSurface extends ReactRootView
         mDelegate = createReactActivityDelegate();
     }
 
-    @Override
-    public void bind(final MicroService service, final JSContext context, final JSObject binding,
-                     final JSValue config, final Runnable onBound, final ReportErrorRunnable onError) {
+    private ReactNativeJS session = null;
+
+    void setSession(ReactNativeJS session) {
+        uuid = session.getSessionUUID();
+        this.session = session;
+    }
+
+    /* package */ void bind(final MicroService service,
+                            final JSContext context,
+                            final JSObject binding,
+                            final JSValue config,
+                            final Runnable onBound) {
         /*
          * ReactNative tries to overwrite global.console, but Node creates it with the read only
          * attribute set.  So we have to delete it first to remove the attribute.
@@ -67,10 +74,6 @@ public class ReactNativeSurface extends ReactRootView
                         "global.console = _c;");
 
         final Application application = ((Activity)getContext()).getApplication();
-
-        SoLoader.init(application,false);
-        SoLoader.loadLibrary("reactnativesurface");
-        JSCShim.staticInit();
 
         final ReactNativeHost reactNativeHost = new ReactNativeHost(application) {
 
@@ -168,24 +171,11 @@ public class ReactNativeSurface extends ReactRootView
                 "", null);
     }
 
-    @Override
-    public void reset() {
-        detach();
-    }
-
-    @Override
-    public View attach(MicroService service, Runnable onAttached, ReportErrorRunnable onError) {
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+    /* package */ void attach() {
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
         setLayoutParams(params);
         mDelegate.onResume();
-
-        onAttached.run();
-        return this;
-    }
-
-    @Override
-    public void detach() {
     }
 
     private final LiquidCoreReactActivityDelegate mDelegate;
@@ -205,6 +195,7 @@ public class ReactNativeSurface extends ReactRootView
     @Override
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
+        session.setCurrentView(this);
         mDelegate.onResume();
         setFocusableInTouchMode(true);
         requestFocus();
@@ -253,6 +244,55 @@ public class ReactNativeSurface extends ReactRootView
     @Override
     public void invokeDefaultOnBackPressed() {
         ((Activity)getContext()).onBackPressed();
+    }
+
+    /* -- parcelable privates -- */
+    private String uuid;
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        Parcelable superState = super.onSaveInstanceState();
+        SavedState ss = new SavedState(superState);
+        ss.uuid = uuid;
+        return ss;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        SavedState ss = (SavedState) state;
+        super.onRestoreInstanceState(ss.getSuperState());
+        uuid = ss.uuid;
+        session = ReactNativeJS.getSessionFromUUID(uuid);
+    }
+
+    static class SavedState extends BaseSavedState {
+        String uuid;
+
+        SavedState(Parcelable superState) {
+            super(superState);
+        }
+
+        private SavedState(Parcel in) {
+            super(in);
+            uuid = in.readString();
+        }
+
+        @Override
+        public void writeToParcel(Parcel out, int flags) {
+            super.writeToParcel(out, flags);
+            out.writeString(uuid);
+        }
+
+        public static final Creator<SavedState> CREATOR
+                = new Creator<SavedState>() {
+            public SavedState createFromParcel(Parcel in) {
+                return new SavedState(in);
+            }
+
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        };
     }
 
 }

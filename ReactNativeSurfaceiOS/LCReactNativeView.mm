@@ -10,7 +10,7 @@
 #import "React/RCTRootViewDelegate.h"
 #import "LCReactNativeView.h"
 #import "cxxreact/JSCExecutor.h"
-#import "LiquidCore/API/Process.h"
+#import <LiquidCore/LiquidCore.h>
 
 @interface RCTSource()
 {
@@ -103,6 +103,7 @@ static RCTSource *RCTSourceCreate(NSURL *url, NSData *data, int64_t length) NS_R
         /*
          * Polyfill for Node's "Deprecation Warning: 'GLOBAL' is deprecated, use 'global'"
          */
+        [context[@"global"] deleteProperty:@"GLOBAL"];
         context[@"GLOBAL"] = context[@"global"];
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -123,25 +124,17 @@ static RCTSource *RCTSourceCreate(NSURL *url, NSData *data, int64_t length) NS_R
     }
 }
 
-- (UIView<LCSurface>*) attach:(LCMicroService*)service
-                   onAttached:(LCOnSuccessHandler)onAttachedHandler
-                      onError:(LCOnFailHandler)onError;
+- (void) attach:(LCOnSuccessHandler)onAttachedHandler
 {
     if (attachedBridge_ != nil) {
         onAttachedHandler();
     } else {
         attachedHandler_ = onAttachedHandler;
     }
-    return self;
 }
 
 - (void) detach
 {
-}
-
-- (void) reset
-{
-    
 }
 
 #pragma RCTBridgeDelegate
@@ -159,8 +152,10 @@ static RCTSource *RCTSourceCreate(NSURL *url, NSData *data, int64_t length) NS_R
         __weak JSContext* jsContext = context;
         context[deferred_fn] = ^{
             [jsContext.globalObject deleteProperty:deferred_fn];
-            self->boundHandler_();
-            self->boundHandler_ = nil;
+            if (self->boundHandler_) {
+                self->boundHandler_();
+                self->boundHandler_ = nil;
+            }
         };
         
         NSString *code = [NSString stringWithFormat:@"global['%@']();", deferred_fn];
@@ -206,9 +201,3 @@ static RCTSource *RCTSourceCreate(NSURL *url, NSData *data, int64_t length) NS_R
 }
 
 @end
-
-__attribute__((constructor))
-void RNstaticInitMethod()
-{
-    [LCSurfaceRegistration registerSurface:LCReactNativeView.class];
-}

@@ -16,7 +16,7 @@ public class ReactBridge {
     // which will do its own locking internally
     if (!sDidInit) {
 //      SoLoader.loadLibrary("reactnativejni");
-      SoLoader.loadLibrary("reactnativesurface");
+//      SoLoader.loadLibrary("reactnativesurface");
       sDidInit = true;
     }
   }

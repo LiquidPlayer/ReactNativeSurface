@@ -5,19 +5,19 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-#import "React/Base/RCTRootViewDelegate.h"
+#import "React/RCTRootViewDelegate.h"
 
 #import <objc/runtime.h>
 
 #import "React/RCTAssert.h"
 #import "React/RCTBridge.h"
-#import "React/Base/RCTBridge+Private.h"
+#import "React/RCTBridge+Private.h"
 #import "React/RCTEventDispatcher.h"
 #import "React/RCTKeyCommands.h"
 #import "React/RCTLog.h"
 #import "React/RCTPerformanceLogger.h"
 #import "React/RCTProfile.h"
-#import "React/Base/RCTRootContentView.h"
+#import "React/RCTRootContentView.h"
 #import "React/RCTTouchHandler.h"
 #import "React/RCTUIManager.h"
 #import "React/RCTUIManagerUtils.h"

@@ -113,3 +113,5 @@ Carthage/Build.rbenv-vars
 ####
 # rbenv
 .rbenv-vars
+
+/node_modules

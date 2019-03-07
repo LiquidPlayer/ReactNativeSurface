@@ -41,8 +41,10 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.10.0'
     implementation 'com.squareup.okio:okio:1.14.0'
 
-    //implementation project(':LiquidCoreAndroid')
-    implementation 'com.github.LiquidPlayer:LiquidCore:0.5.1'
+    implementation project(':LiquidCoreAndroid')
+    //implementation 'com.github.LiquidPlayer:LiquidCore:0.5.1'
+
+    implementation project(':leveldown-android')
 
     implementation project(':ReactNativeSurfaceAndroid')
     //implementation(name:'ReactNativeSurfaceAndroid-release', ext:'aar')
