@@ -51,7 +51,7 @@
         "RCTImage","RCTNetwork","RCTPushNotification","RCTSettings","RCTVibration"]
     },{
       "name": "yoga",
-      "podspec": "deps/react-native-0.56.0/ReactCommon/yoga/yoga.podspec"
+      "path": "deps/react-native-0.56.0/ReactCommon/yoga/yoga.podspec"
     },{
       "name": "DoubleConversion",
       "podspec": "deps/react-native-0.56.0/third-party-podspecs/DoubleConversion.podspec"
