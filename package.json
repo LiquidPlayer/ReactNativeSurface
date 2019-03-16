@@ -22,6 +22,7 @@
     "react-native": "0.56.0"
   },
   "liquidcore-addon": {
+    "android": "ReactNativeSurface-release",
     "android-dev": "ReactNativeSurfaceAndroid",
     "ios-dev": [{
       "name": "React",
@@ -32,6 +33,25 @@
     },{
       "name": "yoga",
       "path": "deps/react-native-0.56.0/ReactCommon/yoga/yoga.podspec"
+    },{
+      "name": "DoubleConversion",
+      "podspec": "deps/react-native-0.56.0/third-party-podspecs/DoubleConversion.podspec"
+    },{
+      "name": "glog",
+      "podspec": "deps/react-native-0.56.0/third-party-podspecs/glog.podspec"
+    },{
+      "name": "Folly",
+      "podspec": "deps/react-native-0.56.0/third-party-podspecs/Folly.podspec"
+    }],
+    "ios": [{
+      "name": "React",
+      "podspec": "React.podspec",
+      "subspecs": ["Core","CxxBridge","DevSupport","RCTText","RCTNetwork","RCTWebSocket",
+        "RCTAnimation","ART","RCTActionSheet","RCTBlob","RCTCameraRoll","RCTGeolocation",
+        "RCTImage","RCTNetwork","RCTPushNotification","RCTSettings","RCTVibration"]
+    },{
+      "name": "yoga",
+      "podspec": "deps/react-native-0.56.0/ReactCommon/yoga/yoga.podspec"
     },{
       "name": "DoubleConversion",
       "podspec": "deps/react-native-0.56.0/third-party-podspecs/DoubleConversion.podspec"
