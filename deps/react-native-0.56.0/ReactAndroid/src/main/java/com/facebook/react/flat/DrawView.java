@@ -137,7 +137,7 @@ import android.graphics.RectF;
   public void draw(FlatViewGroup parent, Canvas canvas) {
     onPreDraw(parent, canvas);
     if (mNeedsClipping || mClipRadius > MINIMUM_ROUNDED_CLIPPING_VALUE) {
-      canvas.save(Canvas.CLIP_SAVE_FLAG);
+      canvas.save(/*Canvas.CLIP_SAVE_FLAG*/);
       applyClipping(canvas);
       parent.drawNextChild(canvas);
       canvas.restore();

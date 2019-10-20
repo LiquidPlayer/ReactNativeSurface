@@ -9,7 +9,7 @@ package com.facebook.react.flat;
 
 import javax.annotation.Nullable;
 
-import android.support.v4.text.TextDirectionHeuristicsCompat;
+import androidx.core.text.TextDirectionHeuristicsCompat;
 import android.text.Layout;
 import android.text.TextUtils;
 import android.view.Gravity;

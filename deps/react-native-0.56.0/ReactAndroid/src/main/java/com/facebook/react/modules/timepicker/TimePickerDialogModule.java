@@ -101,11 +101,11 @@ public class TimePickerDialogModule extends ReactContextBaseJavaModule {
     }
     // We want to support both android.app.Activity and the pre-Honeycomb FragmentActivity
     // (for apps that use it for legacy reasons). This unfortunately leads to some code duplication.
-    if (activity instanceof android.support.v4.app.FragmentActivity) {
-      android.support.v4.app.FragmentManager fragmentManager =
-          ((android.support.v4.app.FragmentActivity) activity).getSupportFragmentManager();
-      android.support.v4.app.DialogFragment oldFragment =
-          (android.support.v4.app.DialogFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG);
+    if (activity instanceof androidx.fragment.app.FragmentActivity) {
+      androidx.fragment.app.FragmentManager fragmentManager =
+          ((androidx.fragment.app.FragmentActivity) activity).getSupportFragmentManager();
+      androidx.fragment.app.DialogFragment oldFragment =
+          (androidx.fragment.app.DialogFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG);
       if (oldFragment != null) {
         oldFragment.dismiss();
       }

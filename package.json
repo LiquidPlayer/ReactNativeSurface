@@ -1,6 +1,6 @@
 {
   "name": "@liquidcore/react-native",
-  "version": "0.56.0.1",
+  "version": "0.56.0.2",
   "description": "React Native 0.56.0 plugin for caraml",
   "main": "lib/index.js",
   "scripts": {
@@ -22,7 +22,7 @@
     "react-native": "0.56.0"
   },
   "liquidcore-addon": {
-    "android": "ReactNativeSurface-release",
+    "android": "release/ReactNativeSurface-release",
     "android-dev": "ReactNativeSurfaceAndroid",
     "ios-dev": [{
       "name": "React",

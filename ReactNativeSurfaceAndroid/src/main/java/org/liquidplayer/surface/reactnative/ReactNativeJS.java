@@ -12,6 +12,7 @@ import org.liquidplayer.caraml.CaramlSurface;
 import org.liquidplayer.javascript.JSContext;
 import org.liquidplayer.javascript.JSFunction;
 import org.liquidplayer.javascript.JSObject;
+import org.liquidplayer.javascript.JSPromise;
 import org.liquidplayer.javascript.JSValue;
 import org.liquidplayer.service.MicroService;
 
@@ -36,7 +37,7 @@ public class ReactNativeJS extends JSObject implements CaramlSurface {
 
         uuid = UUID.randomUUID().toString();
         sessionMap.put(uuid, this);
-        final JSObject promise = context.evaluateScript(createPromiseObject).toObject();
+        final JSPromise promise = new JSPromise(context);
 
         new Handler(Looper.getMainLooper()).post(() -> {
             currentView = new ReactNativeSurface(androidContext);
@@ -45,7 +46,7 @@ public class ReactNativeJS extends JSObject implements CaramlSurface {
                 currentState = State.Detached;
                 context.getGroup().schedule(() -> {
                     emit.call(ReactNativeJS.this, "ready");
-                    promise.property("resolve").toFunction().call();
+                    promise.resolve();
                 });
             });
         });
@@ -57,7 +58,7 @@ public class ReactNativeJS extends JSObject implements CaramlSurface {
 
     @jsexport @SuppressWarnings("unused")
     JSObject attach(JSValue value) {
-        attachPromise = getContext().evaluateScript(createPromiseObject).toObject();
+        attachPromise = new JSPromise(getContext());
         try {
             if (value == null)
                 throw new RuntimeException("attach: first argument must be a caraml object");
@@ -70,7 +71,7 @@ public class ReactNativeJS extends JSObject implements CaramlSurface {
             onError(e);
         }
 
-        return attachPromise.property("promise").toObject();
+        return attachPromise;
     }
 
     @jsexport @SuppressWarnings("unused")
@@ -88,19 +89,18 @@ public class ReactNativeJS extends JSObject implements CaramlSurface {
 
     @jsexport @SuppressWarnings("unused")
     JSObject detach() {
-        detachPromise = getContext().evaluateScript(createPromiseObject).toObject();
-        JSObject promise = detachPromise.property("promise").toObject();
+        detachPromise = new JSPromise(getContext());
+        JSPromise promise = detachPromise;
         if (currentState == State.Detached) {
             emit.call(this, "detached");
-            detachPromise.property("resolve").toFunction().call(null);
+            detachPromise.resolve();
             detachPromise = null;
         } else if (currentState == State.Attached) {
             if (BuildConfig.DEBUG && caramlJS == null) throw new AssertionError();
             currentState = State.Detaching;
             caramlJS.detach();
         } else {
-            detachPromise.property("reject").toFunction().
-                    call(null, "Attach/detach pending");
+            detachPromise.reject("Attach/detach pending");
             detachPromise = null;
         }
         return promise;
@@ -122,7 +122,7 @@ public class ReactNativeJS extends JSObject implements CaramlSurface {
 
         if (!fromRestore) {
             if (attachPromise != null) {
-                attachPromise.property("resolve").toFunction().call(null);
+                attachPromise.resolve();
             }
             emit.call(this, "attached");
             attachPromise = null;
@@ -141,7 +141,7 @@ public class ReactNativeJS extends JSObject implements CaramlSurface {
 
         emit.call(this, "detached");
         if (detachPromise != null) {
-            detachPromise.property("resolve").toFunction().call(null);
+            detachPromise.resolve();
         }
         detachPromise = null;
     }
@@ -151,12 +151,12 @@ public class ReactNativeJS extends JSObject implements CaramlSurface {
         if (currentState != State.Init) {
             currentState = State.Detached;
         }
-        JSObject promise;
+        JSPromise promise;
         if (attachPromise != null) promise = attachPromise;
         else promise = detachPromise;
 
         if (promise != null) {
-            promise.property("reject").toFunction().call(null, e.getMessage());
+            promise.reject(e.getMessage());
         }
         emit.call(this, "error", e.getMessage());
         attachPromise = detachPromise = null;
@@ -184,14 +184,6 @@ public class ReactNativeJS extends JSObject implements CaramlSurface {
     /* private statics
     /*--*/
 
-    private static final String createPromiseObject =
-            "(()=>{" +
-            "  var po = {}; var clock = true;" +
-            "  var timer = setInterval(()=>{if(!clock) clearTimeout(timer);}, 100); "+
-            "  po.promise = new Promise((resolve,reject)=>{po.resolve=resolve;po.reject=reject});" +
-            "  po.promise.then(()=>{clock=false}).catch(()=>{clock=false});" +
-            "  return po;" +
-            "})();";
     private static HashMap<String,ReactNativeJS> sessionMap = new HashMap<>();
 
     /*--
@@ -200,8 +192,8 @@ public class ReactNativeJS extends JSObject implements CaramlSurface {
 
     private final JSFunction emit;
     private final String uuid;
-    private JSObject attachPromise;
-    private JSObject detachPromise;
+    private JSPromise attachPromise;
+    private JSPromise detachPromise;
     private ReactNativeSurface currentView;
     private CaramlJS caramlJS;
 

@@ -18,6 +18,7 @@ public class LiquidCoreMessageQueueThreadImpl implements MessageQueueThread {
     private final String mAssertionErrorMessage;
     private volatile boolean mIsFinished = false;
     private final JSContext mJsContext;
+    private long mContextThreadId;
 
     private LiquidCoreMessageQueueThreadImpl(
             String name,
@@ -26,6 +27,12 @@ public class LiquidCoreMessageQueueThreadImpl implements MessageQueueThread {
         mJsContext = jsContext;
         mName = name;
         mAssertionErrorMessage = "Expected to be called from the '" + getName() + "' thread!";
+        mJsContext.sync(new Runnable() {
+            @Override
+            public void run() {
+                mContextThreadId = Thread.currentThread().getId();
+            }
+        });
     }
 
     /**
@@ -68,7 +75,7 @@ public class LiquidCoreMessageQueueThreadImpl implements MessageQueueThread {
     @DoNotStrip
     @Override
     public boolean isOnThread() {
-        return mJsContext.getGroup().isOnThread();
+        return Thread.currentThread().getId() == mContextThreadId;
     }
 
     /**

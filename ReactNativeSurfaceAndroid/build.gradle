@@ -10,10 +10,10 @@ def ROBOLECTRIC_VERSION="3.0"
 def FEST_ASSERT_CORE_VERSION="2.0M10"
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 56
         versionName "0.56.0006"
 
@@ -24,7 +24,7 @@ android {
         buildConfigField 'boolean', 'IS_INTERNAL_BUILD', 'false'
         buildConfigField 'int', 'EXOPACKAGE_FLAGS', '0'
         testApplicationId "com.facebook.react.tests.gradle"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         externalNativeBuild {
             cmake {
@@ -207,10 +207,11 @@ configurations {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
 
     implementation fileTree(dir: 'src/../../deps/react-native-0.56.0/ReactAndroid/src/main/third-party/java/infer-annotations/', include: ['*.jar'])
     implementation 'javax.inject:javax.inject:1'
@@ -225,10 +226,14 @@ dependencies {
 
     if (findProject(':LiquidCore') != null) {
         liquidcore project(path: ':LiquidCore', configuration: 'default')
+        liquidcore project(path: ':LiquidV8', configuration: 'default')
         implementation project(':LiquidCore')
+        implementation project(':LiquidV8')
     } else {
-        liquidcore 'com.github.LiquidPlayer:LiquidCore:0.6.0'
-        implementation 'com.github.LiquidPlayer:LiquidCore:0.6.0'
+        liquidcore 'com.github.LiquidPlayer:LiquidCore:0.7.0'
+        liquidcore 'com.github.LiquidPlayer:LiquidV8:0.7.0'
+        implementation 'com.github.LiquidPlayer:LiquidCore:0.7.0'
+        implementation 'com.github.LiquidPlayer:LiquidV8:0.7.0'
     }
     /* AddOn: caraml-core */
     if (findProject(':caraml-core') != null) {
@@ -284,5 +289,3 @@ artifacts {
 
 
 apply plugin: 'com.github.dcendents.android-maven'
-
-group='com.github.liquidplayer'
