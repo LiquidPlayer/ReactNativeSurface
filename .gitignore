@@ -115,3 +115,4 @@ Carthage/Build.rbenv-vars
 .rbenv-vars
 
 /node_modules
+/.liquidcore

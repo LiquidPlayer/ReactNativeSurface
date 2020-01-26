@@ -1,0 +1,43 @@
+apply plugin: 'de.undercouch.download'
+import groovy.json.JsonSlurper
+
+def getReactNativeVersionFromNpm() {
+    def inputFile = new File(buildscript.getSourceFile().getParent(), "package.json")
+    def packageJson = new JsonSlurper().parseText(inputFile.text)
+
+    return packageJson["version"]
+}
+
+if (!project.hasProperty('react_native_include_gradle')) {
+  project.ext.set('react_native_include_gradle', true)
+  def _react_native_aar = "react-native-lib-" + getReactNativeVersionFromNpm() + ".aar"
+
+  def downloadsDir_react_native = new File(rootProject.projectDir, ".liquidcore")
+  task createDownloadsDir_react_native {
+      downloadsDir_react_native.mkdirs()
+  }
+  dependencies {
+      if (findProject(':react-native-lib') != null) {
+          implementation project(':react-native-lib')
+      } else {
+          implementation fileTree(include:[_react_native_aar], dir:downloadsDir_react_native)
+      }
+  }
+
+  if (findProject(':react-native-lib') == null) {
+    android { tasks.withType(JavaCompile) {
+        compileTask -> compileTask.dependsOn download_sqlite3_lib }}
+    task download_sqlite3_lib(dependsOn: createDownloadsDir_react_native, type: Download) {
+        src 'https://liquidplayer.github.io/packages/' + _react_native_aar
+        onlyIfNewer true
+        overwrite false
+        dest new File(downloadsDir_react_native, _react_native_aar)
+    }
+  }
+
+  try {
+    apply from: new File(rootProject.projectDir, 'node_modules/liquidcore/include.gradle')
+  } catch (Exception e) {
+    apply from: new File(buildscript.getSourceFile(), '../node_modules/liquidcore/include.gradle')
+  }
+}

@@ -47,8 +47,11 @@ Pod::Spec.new do |s|
   s.subspec "Core" do |ss|
     ss.dependency             "yoga", "#{package["version"]}.React"
     ss.dependency             "LiquidCore"
+    ss.dependency             "LiquidCore-headers"
     ss.dependency             "caraml-core"
     ss.dependency             "Folly", folly_version
+    ss.dependency             "glog"
+    ss.dependency             "DoubleConversion"
     ss.compiler_flags       = folly_compiler_flags
     ss.source_files         = "deps/react-native-0.56.0/React/**/*.{c,h,m,mm,S,cpp}",
                               "ReactNativeSurfaceiOS/*.{c,h,m,mm,S,cpp}",

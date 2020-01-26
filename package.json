@@ -1,6 +1,6 @@
 {
   "name": "@liquidcore/react-native",
-  "version": "0.56.0.2",
+  "version": "0.56.2",
   "description": "React Native 0.56.0 plugin for caraml",
   "main": "lib/index.js",
   "scripts": {
@@ -17,50 +17,98 @@
   },
   "homepage": "https://github.com/LiquidPlayer/ReactNativeSurface",
   "dependencies": {
-    "@liquidcore/caraml-core": "^0.1.2",
+    "liquidcore": "^0.7.2",
+    "@liquidcore/caraml-core": "^0.2.1",
     "bindings": "^1.5.0",
     "react-native": "0.56.0"
   },
-  "liquidcore-addon": {
-    "android": "release/ReactNativeSurface-release",
-    "android-dev": "ReactNativeSurfaceAndroid",
-    "ios-dev": [{
-      "name": "React",
-      "path": "React.podspec",
-      "subspecs": ["Core","CxxBridge","DevSupport","RCTText","RCTNetwork","RCTWebSocket",
-        "RCTAnimation","ART","RCTActionSheet","RCTBlob","RCTCameraRoll","RCTGeolocation",
-        "RCTImage","RCTNetwork","RCTPushNotification","RCTSettings","RCTVibration"]
-    },{
-      "name": "yoga",
-      "path": "deps/react-native-0.56.0/ReactCommon/yoga/yoga.podspec"
-    },{
-      "name": "DoubleConversion",
-      "podspec": "deps/react-native-0.56.0/third-party-podspecs/DoubleConversion.podspec"
-    },{
-      "name": "glog",
-      "podspec": "deps/react-native-0.56.0/third-party-podspecs/glog.podspec"
-    },{
-      "name": "Folly",
-      "podspec": "deps/react-native-0.56.0/third-party-podspecs/Folly.podspec"
-    }],
-    "ios": [{
-      "name": "React",
-      "podspec": "React.podspec",
-      "subspecs": ["Core","CxxBridge","DevSupport","RCTText","RCTNetwork","RCTWebSocket",
-        "RCTAnimation","ART","RCTActionSheet","RCTBlob","RCTCameraRoll","RCTGeolocation",
-        "RCTImage","RCTNetwork","RCTPushNotification","RCTSettings","RCTVibration"]
-    },{
-      "name": "yoga",
-      "path": "deps/react-native-0.56.0/ReactCommon/yoga/yoga.podspec"
-    },{
-      "name": "DoubleConversion",
-      "podspec": "deps/react-native-0.56.0/third-party-podspecs/DoubleConversion.podspec"
-    },{
-      "name": "glog",
-      "podspec": "deps/react-native-0.56.0/third-party-podspecs/glog.podspec"
-    },{
-      "name": "Folly",
-      "podspec": "deps/react-native-0.56.0/third-party-podspecs/Folly.podspec"
-    }]
+  "liquidcore": {
+    "android": {
+      "name": "lib",
+      "dev": "ReactNativeSurfaceAndroid",
+      "include": "include.gradle"
+    },
+    "ios-dev": [
+      {
+        "name": "React",
+        "path": "React.podspec",
+        "subspecs": [
+          "Core",
+          "CxxBridge",
+          "DevSupport",
+          "RCTText",
+          "RCTNetwork",
+          "RCTWebSocket",
+          "RCTAnimation",
+          "ART",
+          "RCTActionSheet",
+          "RCTBlob",
+          "RCTCameraRoll",
+          "RCTGeolocation",
+          "RCTImage",
+          "RCTNetwork",
+          "RCTPushNotification",
+          "RCTSettings",
+          "RCTVibration"
+        ]
+      },
+      {
+        "name": "yoga",
+        "path": "deps/react-native-0.56.0/ReactCommon/yoga/yoga.podspec"
+      },
+      {
+        "name": "DoubleConversion",
+        "podspec": "deps/react-native-0.56.0/third-party-podspecs/DoubleConversion.podspec"
+      },
+      {
+        "name": "glog",
+        "podspec": "deps/react-native-0.56.0/third-party-podspecs/glog.podspec"
+      },
+      {
+        "name": "Folly",
+        "podspec": "deps/react-native-0.56.0/third-party-podspecs/Folly.podspec"
+      }
+    ],
+    "ios": [
+      {
+        "name": "React",
+        "podspec": "React.podspec",
+        "subspecs": [
+          "Core",
+          "CxxBridge",
+          "DevSupport",
+          "RCTText",
+          "RCTNetwork",
+          "RCTWebSocket",
+          "RCTAnimation",
+          "ART",
+          "RCTActionSheet",
+          "RCTBlob",
+          "RCTCameraRoll",
+          "RCTGeolocation",
+          "RCTImage",
+          "RCTNetwork",
+          "RCTPushNotification",
+          "RCTSettings",
+          "RCTVibration"
+        ]
+      },
+      {
+        "name": "yoga",
+        "path": "deps/react-native-0.56.0/ReactCommon/yoga/yoga.podspec"
+      },
+      {
+        "name": "DoubleConversion",
+        "podspec": "deps/react-native-0.56.0/third-party-podspecs/DoubleConversion.podspec"
+      },
+      {
+        "name": "glog",
+        "podspec": "deps/react-native-0.56.0/third-party-podspecs/glog.podspec"
+      },
+      {
+        "name": "Folly",
+        "podspec": "deps/react-native-0.56.0/third-party-podspecs/Folly.podspec"
+      }
+    ]
   }
 }

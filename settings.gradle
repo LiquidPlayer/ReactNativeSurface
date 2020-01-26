@@ -1,5 +1,10 @@
 include ':ReactNativeSurfaceAndroid'
-include ':LiquidCore'
+/*
+include ':liquidcore-Nodejs'
+include ':liquidcore-V8'
 
-project(':LiquidCore').projectDir = new File(
-        rootProject.projectDir, '../LiquidCore/LiquidCoreAndroid')
+project(':liquidcore-Nodejs').projectDir = new File(
+        rootProject.projectDir, '../LiquidCore/LiquidCore')
+project(':liquidcore-V8').projectDir = new File(
+        rootProject.projectDir, '../LiquidCore/LiquidV8')
+*/
