@@ -1,6 +1,6 @@
 {
   "name": "@liquidcore/react-native",
-  "version": "0.56.2",
+  "version": "0.56.3",
   "description": "React Native 0.56.0 plugin for caraml",
   "main": "lib/index.js",
   "scripts": {

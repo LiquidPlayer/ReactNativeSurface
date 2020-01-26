@@ -26,8 +26,8 @@ if (!project.hasProperty('react_native_include_gradle')) {
 
   if (findProject(':react-native-lib') == null) {
     android { tasks.withType(JavaCompile) {
-        compileTask -> compileTask.dependsOn download_sqlite3_lib }}
-    task download_sqlite3_lib(dependsOn: createDownloadsDir_react_native, type: Download) {
+        compileTask -> compileTask.dependsOn download_react_native_lib }}
+    task download_react_native_lib(dependsOn: createDownloadsDir_react_native, type: Download) {
         src 'https://liquidplayer.github.io/packages/' + _react_native_aar
         onlyIfNewer true
         overwrite false
