@@ -20,7 +20,7 @@
     "liquidcore": "^0.7.2",
     "@liquidcore/caraml-core": "^0.2.1",
     "bindings": "^1.5.0",
-    "react-native": "0.56.0"
+    "react-native": "0.70.2"
   },
   "liquidcore": {
     "android": {
